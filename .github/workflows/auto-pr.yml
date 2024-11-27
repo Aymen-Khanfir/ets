@@ -1,0 +1,38 @@
+name: Auto Create PR to Main from Dev
+
+on:
+  pull_request:
+    branches:
+      - dev
+    types:
+      - closed
+
+jobs:
+  create-pr:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    steps:
+      # Check out the code from the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Get the title and body of the merged PR
+      - name: Get PR details
+        id: pr_details
+        run: |
+          PR_TITLE=$(jq --raw-output .pull_request.title < $GITHUB_EVENT_PATH)
+          PR_BODY=$(jq --raw-output .pull_request.body < $GITHUB_EVENT_PATH)
+          echo "::set-output name=title::$PR_TITLE"
+          echo "::set-output name=body::$PR_BODY"
+
+      # Create a pull request from dev to main with the same title and body as the merged PR
+      - name: Create pull request to Main
+        uses: peter-evans/create-pull-request@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          title: ${{ steps.pr_details.outputs.title }}
+          body: ${{ steps.pr_details.outputs.body }}
+          base: main
+          head: dev
+          draft: false  # Set this to 'true' if you want to create it as a draft PR
