@@ -1,5 +1,6 @@
 import react from '@vitejs/plugin-react';
 
+import { TanStackRouterVite } from '@tanstack/router-plugin/vite';
 import path from 'path';
 import { defineConfig } from 'vite';
 import checker from 'vite-plugin-checker';
@@ -8,6 +9,7 @@ import checker from 'vite-plugin-checker';
 export default defineConfig({
   plugins: [
     react(),
+    TanStackRouterVite(),
     checker({
       typescript: true,
       eslint: {
