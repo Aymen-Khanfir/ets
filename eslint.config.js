@@ -60,7 +60,7 @@ export default tseslint.config(
           groups: [
             'type',
             'react',
-            ['external', 'builtin', 'icons', 'tanstack'],
+            ['external', 'builtin', 'tanstack', 'tabler-icons', 'lucide-icons'],
             'custom-features',
             'custom-routes',
             'custom-hooks',
@@ -78,9 +78,10 @@ export default tseslint.config(
           ],
           customGroups: {
             value: {
-              react: 'react',
+              react: '^react',
               tanstack: '@tanstack/*',
-              icons: 'lucide-react',
+              'lucide-icons': 'lucide-react',
+              'tabler-icons': '@tabler/*',
               'custom-features': '@/features/',
               'custom-auth': '@/auth/*',
               'custom-hooks': '@/hooks/*',
