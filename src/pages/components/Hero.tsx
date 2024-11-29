@@ -2,10 +2,7 @@ import HeroImage from '@/assets/images/hero_image.png';
 
 export default function Hero() {
   return (
-    <section
-      id='accueil'
-      className='relative h-[100dvh] w-full overflow-hidden'
-    >
+    <section id='hero' className='relative h-[100dvh] w-full overflow-hidden'>
       {/* Background Image */}
       <img
         src={HeroImage}

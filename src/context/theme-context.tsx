@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useMemo, useState, useEffect, createContext } from 'react';
 
 type Theme = 'dark' | 'light' | 'system';
 
@@ -18,11 +18,26 @@ const initialState: ThemeProviderState = {
   setTheme: () => null,
 };
 
+const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
+
+const applyTheme = (theme: Theme): Theme => {
+  const root = window.document.documentElement;
+  root.classList.remove('light', 'dark');
+
+  if (theme === 'system') {
+    theme = window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light';
+  }
+
+  root.classList.add(theme);
+  return theme;
+};
+
 export function ThemeProvider({
   children,
   defaultTheme = 'system',
   storageKey = 'vite-ui-theme',
-  ...props
 }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(() => {
     const storedTheme = localStorage.getItem(storageKey) as Theme | null;
@@ -30,40 +45,17 @@ export function ThemeProvider({
   });
 
   useEffect(() => {
-    const root = window.document.documentElement;
+    const finalTheme = applyTheme(theme);
+    localStorage.setItem(storageKey, finalTheme);
+  }, [theme, storageKey]);
 
-    root.classList.remove('light', 'dark');
-
-    if (theme === 'system') {
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
-        .matches
-        ? 'dark'
-        : 'light';
-
-      root.classList.add(systemTheme);
-      return;
-    }
-
-    root.classList.add(theme);
-  }, [theme]);
-
-  const value = {
-    theme,
-    setTheme: (theme: Theme) => {
-      localStorage.setItem(storageKey, theme);
-      setTheme(theme);
-    },
-  };
+  const value = useMemo(() => ({ theme, setTheme }), [theme]);
 
   return (
-    <ThemeProviderContext.Provider {...props} value={value}>
+    <ThemeProviderContext.Provider value={value}>
       {children}
     </ThemeProviderContext.Provider>
   );
 }
-
-const ThemeProviderContext = createContext<ThemeProviderState | undefined>(
-  initialState
-);
 
 export { ThemeProviderContext };

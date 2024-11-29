@@ -1,55 +1,67 @@
 import { Link } from '@tanstack/react-router';
 
-import logo from '@/assets/images/logo.png';
+import { CommandMenu } from '@/pages/components/command-menu.tsx';
 
-import { Button } from '@/components/ui/button';
+import { Icons } from '@/components/icons.tsx';
+import { ModeToggle } from '@/components/mode-toggle.tsx';
 
 export default function Navbar() {
   return (
-    <header className='w-full border-b'>
-      <div className='container mx-auto px-4'>
-        <nav className='flex items-center justify-between h-20'>
-          {/* Logo */}
-          <Link to='/' className='flex items-center'>
-            <img src={logo} alt={'logo'} />
-          </Link>
-
-          {/* Navigation Links */}
-          <div className='hidden md:flex items-center space-x-8'>
-            <Link
-              hash='accueil'
-              className='text-gray-700 hover:text-[#14137D] transition-colors'
-            >
-              Accueil
-            </Link>
-            <Link
-              hash='sectors'
-              className='text-gray-700 hover:text-[#14137D] transition-colors'
-            >
-              Secteurs
-            </Link>
-            <Link
-              hash='about'
-              className='text-gray-700 hover:text-[#14137D] transition-colors'
-            >
-              About
-            </Link>
-            <Link
-              hash='quality'
-              className='text-gray-700 hover:text-[#14137D] transition-colors'
-            >
-              Qualité
-            </Link>
+    <header className='sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur overflow-hidden supports-[backdrop-filter]:bg-background/60 dark:border-border'>
+      <div className='flex h-20 items-center px-4'>
+        <MainNav />
+        {/*<MobileNav />*/}
+        <div className='flex flex-1 items-center justify-between gap-2 md:justify-end'>
+          <div className='w-full flex-1 md:w-auto md:flex-none'>
+            <CommandMenu />
           </div>
-
-          {/* Contact Button */}
-          {/* todo: change the button background */}
-
-          <Button className='bg-[#081394] hover:bg-[#0f0f60] text-white'>
-            <Link hash={'contact'}>Contactez-nous</Link>
-          </Button>
-        </nav>
+          <nav className='flex items-center gap-0.5'>
+            <ModeToggle />
+          </nav>
+        </div>
       </div>
     </header>
+  );
+}
+
+function MainNav() {
+  return (
+    <div className='mr-4 hidden md:flex'>
+      <Link href='/' className='mr-4 lg:mr-6'>
+        <Icons.logo className='h-24 w-24' />
+      </Link>
+      <nav className='flex items-center gap-4 text-sm xl:gap-6'>
+        <Link
+          hash='hero'
+          className='transition-colors hover:text-foreground/80'
+        >
+          Accueil
+        </Link>
+        <Link
+          hash='sectors'
+          className='transition-colors hover:text-foreground/80'
+        >
+          Secteurs
+        </Link>
+        <Link
+          hash='about'
+          className='transition-colors hover:text-foreground/80'
+        >
+          A propos
+        </Link>
+        <Link
+          hash='quality'
+          className='transition-colors hover:text-foreground/80'
+        >
+          Qualité
+        </Link>
+        <Link
+          hash='contact'
+          className='transition-colors hover:text-foreground/80'
+        >
+          Contact
+        </Link>
+      </nav>
+    </div>
   );
 }

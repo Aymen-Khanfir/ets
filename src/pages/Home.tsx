@@ -8,15 +8,13 @@ import MainLayout from '@/components/layouts/main-layout.tsx';
 
 function Home() {
   return (
-    <>
-      <MainLayout>
-        <Hero />
-        <Sectors2 />
-        <About />
-        <QualityPolicy />
-        <Contact />
-      </MainLayout>
-    </>
+    <MainLayout>
+      <Hero />
+      <Sectors2 />
+      <About />
+      <QualityPolicy />
+      <Contact />
+    </MainLayout>
   );
 }
 
