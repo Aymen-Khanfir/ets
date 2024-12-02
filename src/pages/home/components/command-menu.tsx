@@ -2,9 +2,9 @@ import * as React from 'react';
 
 import { Wallpaper } from 'lucide-react';
 
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/utils.ts';
 
-import { sectorConfig } from '@/config/sectors.ts';
+import { navConfig } from '@/config/nav-config.tsx';
 import { type DialogProps } from '@radix-ui/react-dialog';
 
 import { Button } from '@/components/ui/button.tsx';
@@ -51,7 +51,7 @@ export function CommandMenu({ ...props }: DialogProps) {
   return (
     <>
       <Button
-        variant='outline'
+        variant='secondary'
         className={cn(
           'relative h-8 w-full justify-start bg-muted/50 text-sm font-normal text-muted-foreground shadow-none sm:pr-12 md:w-40 lg:w-56 xl:w-64'
         )}
@@ -60,18 +60,22 @@ export function CommandMenu({ ...props }: DialogProps) {
         }}
         {...props}
       >
-        <span className='hidden lg:inline-flex'>Search sector...</span>
-        <span className='inline-flex lg:hidden'>Search...</span>
-        <kbd className='pointer-events-none absolute right-[0.3rem] top-1/2 -translate-y-1/2 hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex'>
+        <span className='font-Lato hidden md:inline-flex lg:inline-flex'>
+          Search
+        </span>
+        <span className='font-Lato inline-flex md:hidden lg:hidden'>
+          Search Sectors
+        </span>
+        <kbd className='font-Lato pointer-events-none absolute right-[0.3rem] top-1/2 -translate-y-1/2 hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 text-[10px] font-medium opacity-100 sm:flex'>
           <span className='text-xs'>⌘</span>K
         </kbd>
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder='Search Sectors...' />
+        <CommandInput placeholder='Search Sectors' />
         <CommandList>
           <CommandEmpty>No results found!</CommandEmpty>
           <CommandGroup heading='Sectors'>
-            {sectorConfig.mainNav
+            {navConfig.sectorsNav
               .filter((navItem) => !navItem.external)
               .map((navItem) => (
                 <CommandItem

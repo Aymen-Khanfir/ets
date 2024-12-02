@@ -3,7 +3,8 @@ import {
   createRootRoute,
   ScrollRestoration,
 } from '@tanstack/react-router';
-import { TanStackRouterDevtools } from '@tanstack/router-devtools';
+
+import { TanStackRouterDevelopmentTools } from '@/components/TanStackRouterDevelopmentTools.tsx';
 
 export const Route = createRootRoute({
   component: RootComponent,
@@ -11,10 +12,10 @@ export const Route = createRootRoute({
 
 function RootComponent() {
   return (
-    <>
+    <div>
       <ScrollRestoration />
       <Outlet />
-      <TanStackRouterDevtools />
-    </>
+      <TanStackRouterDevelopmentTools />
+    </div>
   );
 }

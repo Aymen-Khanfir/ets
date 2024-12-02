@@ -1,16 +1,44 @@
-import { Link } from '@tanstack/react-router';
+import { useState } from 'react';
 
-import { CommandMenu } from '@/pages/components/command-menu.tsx';
+import { Link } from '@tanstack/react-router';
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
+
+import { navConfig } from '@/config/nav-config.tsx';
 
 import { Icons } from '@/components/icons.tsx';
+import { MobileNav } from '@/components/mobile-nav.tsx';
 import { ModeToggle } from '@/components/mode-toggle.tsx';
+import { Button } from '@/components/ui/button.tsx';
+
+import { CommandMenu } from '@/pages/home/components/command-menu.tsx';
 
 export default function Navbar() {
+  const [hidden, setHidden] = useState<boolean>(false);
+
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    const previous = scrollY.getPrevious();
+    if (previous && latest > previous && latest > 150) {
+      setHidden(true);
+    } else {
+      setHidden(false);
+    }
+  });
+
   return (
-    <header className='sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur overflow-hidden supports-[backdrop-filter]:bg-background/60 dark:border-border'>
-      <div className='flex h-20 items-center px-4'>
+    <motion.header
+      variants={{
+        hidden: { y: '-100%' },
+        visible: { y: 0 },
+      }}
+      animate={hidden ? 'hidden' : 'visible'}
+      transition={{ duration: 0.35, ease: 'easeInOut' }}
+      className='sticky top-0 z-50 w-full bg-background/95 backdrop-blur overflow-hidden supports-[backdrop-filter]:bg-background/60'
+    >
+      <div className='flex h-14 md:h-20 items-center px-4'>
         <MainNav />
-        {/*<MobileNav />*/}
+        <MobileNav />
         <div className='flex flex-1 items-center justify-between gap-2 md:justify-end'>
           <div className='w-full flex-1 md:w-auto md:flex-none'>
             <CommandMenu />
@@ -20,47 +48,35 @@ export default function Navbar() {
           </nav>
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 }
 
 function MainNav() {
   return (
-    <div className='mr-4 hidden md:flex'>
-      <Link href='/' className='mr-4 lg:mr-6'>
-        <Icons.logo className='h-24 w-24' />
+    <div className='hidden md:flex md:gap-3'>
+      <Link to='/' className='mr-2 lg:mr-6'>
+        <Icons.logo className='h-20 w-20 lg:h-24 lg:w-24 text-primary' />
       </Link>
-      <nav className='flex items-center gap-4 text-sm xl:gap-6'>
-        <Link
-          hash='hero'
-          className='transition-colors hover:text-foreground/80'
-        >
-          Accueil
-        </Link>
-        <Link
-          hash='sectors'
-          className='transition-colors hover:text-foreground/80'
-        >
-          Secteurs
-        </Link>
-        <Link
-          hash='about'
-          className='transition-colors hover:text-foreground/80'
-        >
-          A propos
-        </Link>
-        <Link
-          hash='quality'
-          className='transition-colors hover:text-foreground/80'
-        >
-          Qualité
-        </Link>
-        <Link
-          hash='contact'
-          className='transition-colors hover:text-foreground/80'
-        >
-          Contact
-        </Link>
+      <nav className='flex items-center gap-1 xl:gap-3'>
+        {navConfig.mainNav.map((option) => {
+          return (
+            <Link
+              key={option.label}
+              hash={option.hash}
+              activeOptions={{ exact: true, includeHash: true }}
+              activeProps={{ className: 'text-primary' }}
+              className='transition-colors font-bold'
+            >
+              <Button
+                variant='ghost'
+                className='text-md font-Lato hover:text-primary p-3'
+              >
+                {option.label}
+              </Button>
+            </Link>
+          );
+        })}
       </nav>
     </div>
   );

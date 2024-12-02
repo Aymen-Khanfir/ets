@@ -4,14 +4,16 @@ import useEmblaCarousel from 'embla-carousel-react';
 
 import { cn } from '@/lib/utils.ts';
 
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card.tsx';
 import {
   Carousel,
   CarouselItem,
   CarouselNext,
   CarouselContent,
   CarouselPrevious,
-} from '@/components/ui/carousel';
+} from '@/components/ui/carousel.tsx';
+
+import { Sector } from '@/types/sector';
 
 function Sectors() {
   return (
@@ -44,22 +46,36 @@ function Sectors() {
 
 export default Sectors;
 
-interface Category {
-  title: string;
-  image: string;
-}
-
-const categories: Category[] = [
-  { title: '1', image: '/placeholder.svg?height=400&width=600' },
-  { title: '2', image: '/placeholder.svg?height=400&width=600' },
-  { title: '3', image: '/placeholder.svg?height=400&width=600' },
-  { title: '4', image: '/placeholder.svg?height=400&width=600' },
-  { title: '5', image: '/placeholder.svg?height=400&width=600' },
-  { title: '6', image: '/placeholder.svg?height=400&width=600' },
-  { title: '7', image: '/placeholder.svg?height=400&width=600' },
-  { title: '8', image: '/placeholder.svg?height=400&width=600' },
-  { title: '9', image: '/placeholder.svg?height=400&width=600' },
-  { title: '10', image: '/placeholder.svg?height=400&width=600' },
+const sectors: Sector[] = [
+  {
+    title: 'Forest Adventure',
+    image:
+      'https://images.unsplash.com/photo-1518710843675-2540dd79065c?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  },
+  {
+    title: 'Valley of life',
+    image:
+      'https://images.unsplash.com/photo-1600271772470-bd22a42787b3?q=80&w=3072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  },
+  {
+    title: 'Sala behta hi jayega',
+    image:
+      'https://images.unsplash.com/photo-1505142468610-359e7d316be0?q=80&w=3070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  },
+  {
+    title: 'Camping is for pros',
+    image:
+      'https://images.unsplash.com/photo-1486915309851-b0cc1f8a0084?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  },
+  {
+    title: 'The road not taken',
+    image:
+      'https://images.unsplash.com/photo-1507041957456-9c397ce39c97?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  },
+  {
+    title: 'The First Rule',
+    image: 'https://assets.aceternity.com/the-first-rule.png',
+  },
 ];
 
 export function Sectors2() {
@@ -123,20 +139,20 @@ export function Sectors2() {
     <section id='sectors' className='relative w-full max-w-7xl mx-auto'>
       <div className='overflow-hidden' ref={emblaRef}>
         <div className='flex'>
-          {categories.map((category, index) => (
+          {sectors.map((sector: Sector, index) => (
             <div
               key={index}
               className='relative flex-[0_0_100%] min-w-0 lg:flex-[0_0_20%]'
             >
               <Card className='relative overflow-hidden aspect-[3/2] border-none m-2'>
                 <img
-                  src={category.image}
-                  alt={category.title}
+                  src={sector.image}
+                  alt={sector.title}
                   className='w-full h-full object-cover'
                 />
                 <div className='absolute inset-0 flex items-center justify-center'>
                   <div className='bg-[#CD7F32] text-white px-4 py-2 text-sm lg:text-base font-medium'>
-                    {category.title}
+                    {sector.title}
                   </div>
                 </div>
               </Card>
@@ -146,7 +162,7 @@ export function Sectors2() {
       </div>
 
       <div className='flex justify-center gap-4 mt-4'>
-        {[0, Math.floor(categories.length / 2)].map((bulletIndex) => (
+        {[0, Math.floor(sectors.length / 2)].map((bulletIndex) => (
           <button
             key={bulletIndex}
             onClick={() => {
@@ -154,12 +170,12 @@ export function Sectors2() {
             }}
             className={cn(
               'w-3 h-3 rounded-full transition-colors',
-              selectedIndex < Math.floor(categories.length / 2) &&
+              selectedIndex < Math.floor(sectors.length / 2) &&
                 bulletIndex === 0
                 ? 'bg-[#CD7F32]'
                 : '',
-              selectedIndex >= Math.floor(categories.length / 2) &&
-                bulletIndex === Math.floor(categories.length / 2)
+              selectedIndex >= Math.floor(sectors.length / 2) &&
+                bulletIndex === Math.floor(sectors.length / 2)
                 ? 'bg-[#CD7F32]'
                 : '',
               'border border-[#CD7F32]'

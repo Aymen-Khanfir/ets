@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 import { IconBrandFacebook } from '@tabler/icons-react';
 import { Link } from '@tanstack/react-router';
 import { Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
+import { toast } from 'sonner';
 
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
+import { Button } from '@/components/ui/button.tsx';
+import { Input } from '@/components/ui/input.tsx';
+import { Textarea } from '@/components/ui/textarea.tsx';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -59,7 +60,7 @@ export default function Contact() {
 
               <div className='flex gap-4 pt-4'>
                 <Link
-                  href='/'
+                  href='/public'
                   className='bg-white p-2 rounded-full text-[#081394] hover:bg-gray-100 transition-colors'
                 >
                   <IconBrandFacebook stroke={2} />
@@ -130,8 +131,13 @@ export default function Contact() {
               </div>
 
               <Button
-                type='submit'
                 className='bg-white text-[#081394] hover:bg-gray-100 w-full md:w-auto'
+                onClick={() =>
+                  toast.custom(
+                    'Votre message a été envoyé avec succès !',
+                    'success'
+                  )
+                }
               >
                 Soumettre
               </Button>

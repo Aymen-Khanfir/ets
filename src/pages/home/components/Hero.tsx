@@ -1,5 +1,7 @@
 import HeroImage from '@/assets/images/hero_image.png';
 
+import { Icons } from '@/components/icons.tsx';
+
 export default function Hero() {
   return (
     <section id='hero' className='relative h-[100dvh] w-full overflow-hidden'>
@@ -7,21 +9,17 @@ export default function Hero() {
       <img
         src={HeroImage}
         alt='Industrial workspace'
-        className='object-cover'
+        className='object-cover h-full w-full'
       />
 
       {/* Overlay */}
-      <div className='absolute inset-0 bg-white/80 m-6'>
-        <div className='container mx-auto h-full flex flex-col items-center justify-center text-center px-4'>
+      <div className='absolute w-full top-1/2 right-1/2 translate-x-1/2 -translate-y-1/2 bg-card/60 overflow-hidden'>
+        <div className='container flex flex-col items-center'>
           {/* Company Name */}
-          <h1 className='text-[#081394] font-bold text-5xl md:text-6xl mb-6'>
-            ETS LOUATI
-            <br />
-            COLLAGE
-          </h1>
+          <Icons.logo className='text-primary' />
 
           {/* Tagline */}
-          <p className='text-xl md:text-2xl text-gray-800 max-w-3xl'>
+          <p className='font-Lato text-sm md:text-2xl max-w-3xl'>
             Votre partenaire idéal pour des solutions de contre-collage sur
             mesure !
           </p>

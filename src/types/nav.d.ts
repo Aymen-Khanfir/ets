@@ -1,11 +1,12 @@
-import { Icons } from '@/components/icons';
+import React from 'react';
 
 export interface NavItem {
-  title: string;
+  title?: string;
   href?: string;
+  hash?: string;
   disabled?: boolean;
   external?: boolean;
-  icon?: keyof typeof Icons;
+  icon?: React.ReactNode;
   label?: string;
 }
 
