@@ -133,10 +133,7 @@ export default function Contact() {
               <Button
                 className='bg-white text-[#081394] hover:bg-gray-100 w-full md:w-auto'
                 onClick={() =>
-                  toast.custom(
-                    'Votre message a été envoyé avec succès !',
-                    'success'
-                  )
+                  toast.success('Votre message a été envoyé avec succès')
                 }
               >
                 Soumettre
