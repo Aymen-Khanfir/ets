@@ -1,0 +1,8 @@
+{
+  "Arabic": "العربية",
+  "English": "الإنجليزية",
+  "French": "الفرنسية",
+  "language_changed": "تم تغيير اللغة إلى العربية",
+  "language_current": "اللغة الحالية: {{lng}}",
+  "language_change_failed": "فشل في تغيير اللغة"
+}

@@ -1,10 +1,10 @@
 import AboutImage from '@/assets/images/about_image.png';
 
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/button.tsx';
 
 export default function About() {
   return (
-    <section className='bg-[#081394] py-20' id='about'>
+    <section className='bg-[#081394] py-20 overflow-hidden' id='about'>
       <div className='container mx-auto px-4'>
         <div className='grid md:grid-cols-2 gap-8 items-center'>
           {/* Text Content */}
