@@ -8,13 +8,13 @@ import { navConfig } from '@/config/nav-config.tsx';
 import { Icons } from '@/components/icons.tsx';
 import { MobileNav } from '@/components/mobile-nav.tsx';
 import { ModeToggle } from '@/components/mode-toggle.tsx';
+import { SwitchLanguage } from '@/components/switch-language.tsx';
 import { Button } from '@/components/ui/button.tsx';
 
 import { CommandMenu } from '@/pages/home/components/command-menu.tsx';
 
 export default function Navbar() {
   const [hidden, setHidden] = useState<boolean>(false);
-
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
@@ -43,8 +43,11 @@ export default function Navbar() {
           <div className='w-full flex-1 md:w-auto md:flex-none'>
             <CommandMenu />
           </div>
-          <nav className='flex items-center gap-0.5'>
+          <nav className='flex items-center gap-2'>
             <ModeToggle />
+            <div className='hidden md:inline-flex p-2 rounded cursor-pointer hover:bg-border'>
+              <SwitchLanguage />
+            </div>
           </nav>
         </div>
       </div>
@@ -70,7 +73,7 @@ function MainNav() {
             >
               <Button
                 variant='ghost'
-                className='text-md font-Lato hover:text-primary p-3'
+                className='text-md font-Lato hover:text-primary md:p-3'
               >
                 {option.label}
               </Button>

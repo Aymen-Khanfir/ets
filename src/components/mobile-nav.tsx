@@ -3,6 +3,7 @@ import { Link } from '@tanstack/react-router';
 import { navConfig } from '@/config/nav-config.tsx';
 
 import { Icons } from '@/components/icons.tsx';
+import { SwitchLanguage } from '@/components/switch-language.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import { DialogTitle, DialogDescription } from '@/components/ui/dialog.tsx';
 import { ScrollArea } from '@/components/ui/scroll-area.tsx';
@@ -66,9 +67,9 @@ export function MobileNav() {
               })}
             </nav>
           </ScrollArea>
-          <SheetFooter className='p-4 border-t'>
+          <SheetFooter className='p-4 border-t flex-row justify-end'>
             <SheetClose asChild>
-              <Button className='w-full'>Change Language</Button>
+              <SwitchLanguage />
             </SheetClose>
           </SheetFooter>
         </div>
