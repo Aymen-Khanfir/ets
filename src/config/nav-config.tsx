@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import { Icons } from '@/components/icons.tsx';
 
 import { NavItem } from '@/types/nav';
@@ -7,62 +9,66 @@ export interface NavConfig {
   sectorsNav: NavItem[];
 }
 
-export const navConfig: NavConfig = {
-  sectorsNav: [
-    {
-      title: 'Lingerie',
-      href: '/',
-    },
-    {
-      title: 'Ameublement',
-      href: '/docs',
-    },
-    {
-      title: 'Chaussures',
-      href: '/docs/components/accordion',
-    },
-    {
-      title: 'Automobile',
-      href: '/blocks',
-    },
-    {
-      title: 'Orthopédie',
-      href: '/charts',
-    },
-    {
-      title: 'Secteur des sacs',
-      href: '/themes',
-    },
-    {
-      title: 'Vetements de travail',
-      href: '/colors',
-    },
-  ],
-  mainNav: [
-    {
-      hash: 'hero',
-      label: 'Accueil',
-      icon: <Icons.home />,
-    },
-    {
-      hash: 'sectors',
-      label: 'Secteurs',
-      icon: <Icons.swatchBook />,
-    },
-    {
-      hash: 'about',
-      label: 'A propos',
-      icon: <Icons.about />,
-    },
-    {
-      hash: 'quality',
-      label: 'Qualité',
-      icon: <Icons.sparkles />,
-    },
-    {
-      hash: 'contact',
-      label: 'Contact',
-      icon: <Icons.phone />,
-    },
-  ],
-};
+export function useNavConfig(): NavConfig {
+  const { t } = useTranslation();
+
+  return {
+    sectorsNav: [
+      {
+        title: t('search_nav.lingerie'),
+        href: '/',
+      },
+      {
+        title: t('search_nav.furniture'),
+        href: '/docs',
+      },
+      {
+        title: t('search_nav.shoes'),
+        href: '/docs/components/accordion',
+      },
+      {
+        title: t('search_nav.automotive'),
+        href: '/blocks',
+      },
+      {
+        title: t('search_nav.orthopedics'),
+        href: '/charts',
+      },
+      {
+        title: t('search_nav.bags'),
+        href: '/themes',
+      },
+      {
+        title: t('search_nav.work_clothes'),
+        href: '/colors',
+      },
+    ],
+    mainNav: [
+      {
+        hash: 'hero',
+        label: t('main_nav.home'),
+        icon: <Icons.home />,
+      },
+      {
+        hash: 'sectors',
+        label: t('main_nav.sectors'),
+        icon: <Icons.swatchBook />,
+      },
+      {
+        hash: 'about',
+        label: t('main_nav.about'),
+        icon: <Icons.about />,
+      },
+      {
+        hash: 'quality',
+        label: t('main_nav.quality'),
+        icon: <Icons.sparkles />,
+      },
+      {
+        hash: 'contact',
+        label: t('main_nav.contact'),
+        icon: <Icons.phone />,
+      },
+    ],
+  };
+}

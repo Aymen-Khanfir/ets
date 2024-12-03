@@ -1,8 +1,24 @@
 {
-  "Arabic": "العربية",
-  "English": "الإنجليزية",
-  "French": "الفرنسية",
+  "arabic": "العربية",
+  "english": "الإنجليزية",
+  "french": "الفرنسية",
   "language_changed": "تم تغيير اللغة إلى العربية",
   "language_current": "اللغة الحالية: {{lng}}",
-  "language_change_failed": "فشل في تغيير اللغة"
+  "language_change_failed": "فشل في تغيير اللغة",
+  "main_nav": {
+    "home": "الصفحة الرئيسية",
+    "about": "معلومات عنا",
+    "sectors": "القطاعات",
+    "quality": "جودة",
+    "contact": "اتصل"
+  },
+  "search_nav": {
+    "lingerie": "ملابس داخلية",
+    "furniture": "أثاث",
+    "shoes": "أحذية",
+    "automotive": "سيارات",
+    "orthopedics": "جراحة العظام",
+    "bags": "حقائب",
+    "work_clothes": "ملابس العمل"
+  }
 }

@@ -1,8 +1,24 @@
 {
-  "English": "Anglais",
-  "French": "Français",
-  "Arabic": "Arabe",
+  "english": "Anglais",
+  "french": "Français",
+  "arabic": "Arabe",
   "language_changed": "La langue a été changée en Français",
   "language_current": "Langue Actuelle : {{lng}}",
-  "language_change_failed": "Échec du changement de langue"
+  "language_change_failed": "Échec du changement de langue",
+  "main_nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "sectors": "Secteurs",
+    "quality": "Qualité",
+    "contact": "Contact"
+  },
+  "search_nav": {
+    "lingerie": "Lingerie",
+    "furniture": "Ameublement",
+    "shoes": "Chaussures",
+    "automotive": "Automobile",
+    "orthopedics": "Orthopédie",
+    "bags": "Sacs",
+    "work_clothes": "Vêtements de travail"
+  }
 }

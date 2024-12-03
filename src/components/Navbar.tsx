@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Link } from '@tanstack/react-router';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 
-import { navConfig } from '@/config/nav-config.tsx';
+import { useNavConfig } from '@/config/nav-config.tsx';
 
 import { Icons } from '@/components/icons.tsx';
 import { MobileNav } from '@/components/mobile-nav.tsx';
@@ -56,17 +56,19 @@ export default function Navbar() {
 }
 
 function MainNav() {
+  const { mainNav } = useNavConfig();
+
   return (
     <div className='hidden md:flex md:gap-3'>
       <Link to='/' className='mr-2 lg:mr-6'>
         <Icons.logo className='h-20 w-20 lg:h-24 lg:w-24 text-primary' />
       </Link>
       <nav className='flex items-center gap-1 xl:gap-3'>
-        {navConfig.mainNav.map((option) => {
+        {mainNav.map((link) => {
           return (
             <Link
-              key={option.label}
-              hash={option.hash}
+              key={link.label}
+              hash={link.hash}
               activeOptions={{ exact: true, includeHash: true }}
               activeProps={{ className: 'text-primary' }}
               className='transition-colors font-bold'
@@ -75,7 +77,7 @@ function MainNav() {
                 variant='ghost'
                 className='text-md font-Lato hover:text-primary md:p-3'
               >
-                {option.label}
+                {link.label}
               </Button>
             </Link>
           );

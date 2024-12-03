@@ -9,17 +9,17 @@ export function useAllLanguages(): Language[] {
 
   return [
     {
-      label: t('English'),
+      label: t('english'),
       value: 'en',
       icon: <Icons.english className='w-7 h-5' />,
     },
     {
-      label: t('French'),
+      label: t('french'),
       value: 'fr',
       icon: <Icons.french className='w-7 h-5' />,
     },
     {
-      label: t('Arabic'),
+      label: t('arabic'),
       value: 'ar',
       icon: <Icons.arabic className='bg-[#2d5f06] w-7 h-5' />,
     },

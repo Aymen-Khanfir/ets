@@ -4,7 +4,7 @@ import { Wallpaper } from 'lucide-react';
 
 import { cn } from '@/lib/utils.ts';
 
-import { navConfig } from '@/config/nav-config.tsx';
+import { useNavConfig } from '@/config/nav-config.tsx';
 import { type DialogProps } from '@radix-ui/react-dialog';
 
 import { Button } from '@/components/ui/button.tsx';
@@ -19,6 +19,7 @@ import {
 
 export function CommandMenu({ ...props }: DialogProps) {
   const [open, setOpen] = React.useState(false);
+  const { sectorsNav } = useNavConfig();
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -75,20 +76,20 @@ export function CommandMenu({ ...props }: DialogProps) {
         <CommandList>
           <CommandEmpty>No results found!</CommandEmpty>
           <CommandGroup heading='Sectors'>
-            {navConfig.sectorsNav
-              .filter((navItem) => !navItem.external)
-              .map((navItem) => (
+            {sectorsNav
+              .filter((sector) => !sector.external)
+              .map((sector) => (
                 <CommandItem
-                  key={navItem.href}
-                  value={navItem.title}
+                  key={sector.href}
+                  value={sector.title}
                   onSelect={() => {
                     runCommand(() => {
-                      console.log('Navigating to', navItem.href);
+                      console.log('Navigating to', sector.href);
                     });
                   }}
                 >
                   <Wallpaper />
-                  {navItem.title}
+                  {sector.title}
                 </CommandItem>
               ))}
           </CommandGroup>
