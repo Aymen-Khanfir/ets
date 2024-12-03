@@ -3,23 +3,39 @@ import { useTranslation } from 'react-i18next';
 
 import { toast } from 'sonner';
 
-import { Language } from '@/types/language';
+import { useAllLanguages } from '@/config/language-config.tsx';
 
-export function useLocales(allLanguages: Language[]) {
+export function useLocales() {
+  const allLanguages = useAllLanguages();
   const { i18n, t } = useTranslation();
   const [dir, setDir] = useState(i18n.language === 'ar' ? 'rtl' : 'ltr');
 
   const changeLanguage = useCallback(
     async (lng: string) => {
+      if (lng === i18n.language) {
+        const selectedLanguage = allLanguages.find(
+          (lang) => lang.value === lng
+        );
+
+        if (selectedLanguage) {
+          toast.info(t('language_current', { lang: selectedLanguage.label }), {
+            richColors: true,
+          });
+        }
+        return;
+      }
+
       try {
         await i18n.changeLanguage(lng);
-        toast.success(t('language_changed'));
+        toast.success(t('language_changed'), {
+          richColors: true,
+        });
       } catch (error) {
         console.error('Failed to change language:', error);
         toast.error(t('language_change_failed'));
       }
     },
-    [i18n, t]
+    [allLanguages, i18n, t]
   );
 
   useEffect(() => {
@@ -44,6 +60,7 @@ export function useLocales(allLanguages: Language[]) {
     allLanguages[0];
 
   return {
+    allLanguages,
     currentLanguage,
     changeLanguage,
     dir,

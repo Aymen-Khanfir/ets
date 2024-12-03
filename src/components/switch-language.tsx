@@ -5,8 +5,6 @@ import { usePopover } from '@/hooks/use-popover.ts';
 
 import { cn } from '@/lib/utils.ts';
 
-import { useAllLanguages } from '@/config/language-config.tsx';
-
 import {
   Popover,
   PopoverContent,
@@ -18,9 +16,8 @@ export function SwitchLanguage({
 }: {
   align?: 'start' | 'end' | 'center';
 }) {
-  const allLanguages = useAllLanguages();
   const { open, onOpenChange, close } = usePopover();
-  const { currentLanguage, changeLanguage } = useLocales(allLanguages);
+  const { allLanguages, currentLanguage, changeLanguage } = useLocales();
 
   return (
     <Popover open={open} onOpenChange={onOpenChange}>

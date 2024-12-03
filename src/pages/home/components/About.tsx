@@ -1,26 +1,29 @@
+import { useTranslation } from 'react-i18next';
+
 import AboutImage from '@/assets/images/about_image.png';
 
 import { Button } from '@/components/ui/button.tsx';
 
 export default function About() {
+  const { t } = useTranslation();
+
   return (
-    <section className='bg-[#081394] py-20 overflow-hidden' id='about'>
+    <section
+      className='bg-primary dark:bg-secondary py-20 overflow-hidden'
+      id='about'
+    >
       <div className='container mx-auto px-4'>
         <div className='grid md:grid-cols-2 gap-8 items-center'>
           {/* Text Content */}
-          <div className='space-y-6'>
-            <h2 className='text-white text-4xl md:text-5xl font-bold'>
-              Votre partenaire idéal pour des solutions de contre-collage sur
-              mesure !
+          <div className='space-y-4'>
+            <h2 className='text-background dark:text-primary transition-colors text-4xl md:text-5xl font-bold'>
+              {t('about.title')}
             </h2>
-            <p className='text-white text-lg md:text-xl leading-relaxed'>
-              ETS Louati Collage, avec plus de 30 ans d&apos;expérience dans
-              l&apos;industrie textile, est spécialisé dans le contrecollage de
-              textiles et divers matériaux. Nous garantissons des résultats de
-              haute qualité et durables.
+            <p className='text-muted-foreground dark:text-accent-foreground font-medium font-Parkinsans text-lg md:text-xl leading-relaxed'>
+              {t('about.description')}
             </p>
-            <Button className='bg-white text-[#081394] hover:bg-gray-100'>
-              Contactez-nous
+            <Button variant='outline' size='lg'>
+              {t('main_nav.contact', { context: 'large' })}
             </Button>
           </div>
 

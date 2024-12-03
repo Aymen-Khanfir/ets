@@ -1,6 +1,9 @@
 import * as React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { Wallpaper } from 'lucide-react';
+
+import { useLocales } from '@/hooks/use-locales.ts';
 
 import { cn } from '@/lib/utils.ts';
 
@@ -20,6 +23,8 @@ import {
 export function CommandMenu({ ...props }: DialogProps) {
   const [open, setOpen] = React.useState(false);
   const { sectorsNav } = useNavConfig();
+  const { t } = useTranslation();
+  const { dir } = useLocales();
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -54,7 +59,7 @@ export function CommandMenu({ ...props }: DialogProps) {
       <Button
         variant='secondary'
         className={cn(
-          'relative h-8 w-full justify-start bg-muted/50 text-sm font-normal text-muted-foreground shadow-none sm:pr-12 md:w-40 lg:w-56 xl:w-64'
+          'relative h-8 w-full justify-start bg-muted/50 text-sm font-normal text-muted-foreground shadow-none md:w-40 lg:w-56 xl:w-64'
         )}
         onClick={() => {
           setOpen(true);
@@ -62,20 +67,25 @@ export function CommandMenu({ ...props }: DialogProps) {
         {...props}
       >
         <span className='font-Lato hidden md:inline-flex lg:inline-flex'>
-          Search
+          {t('search')}
         </span>
         <span className='font-Lato inline-flex md:hidden lg:hidden'>
-          Search Sectors
+          {t('search', { context: 'large_text' })}
         </span>
-        <kbd className='font-Lato pointer-events-none absolute right-[0.3rem] top-1/2 -translate-y-1/2 hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 text-[10px] font-medium opacity-100 sm:flex'>
+        <kbd
+          className={cn(
+            'font-Lato pointer-events-none absolute top-1/2 -translate-y-1/2 hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 text-[10px] font-medium opacity-100 sm:flex',
+            dir === 'ltr' ? 'right-[0.3rem]' : 'left-[0.3rem]'
+          )}
+        >
           <span className='text-xs'>⌘</span>K
         </kbd>
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder='Search Sectors' />
+        <CommandInput placeholder={t('search', { context: 'large_text' })} />
         <CommandList>
-          <CommandEmpty>No results found!</CommandEmpty>
-          <CommandGroup heading='Sectors'>
+          <CommandEmpty>{t('search', { context: 'no_result' })}</CommandEmpty>
+          <CommandGroup heading={t('main_nav.sectors')}>
             {sectorsNav
               .filter((sector) => !sector.external)
               .map((sector) => (

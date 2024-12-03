@@ -4,7 +4,6 @@ import { useLocales } from '@/hooks/use-locales.ts';
 
 import { cn } from '@/lib/utils.ts';
 
-import { useAllLanguages } from '@/config/language-config.tsx';
 import { useNavConfig } from '@/config/nav-config.tsx';
 
 import { Icons } from '@/components/icons.tsx';
@@ -22,8 +21,7 @@ import {
 } from '@/components/ui/sheet.tsx';
 
 export function MobileNav() {
-  const allLanguages = useAllLanguages();
-  const { dir } = useLocales(allLanguages);
+  const { dir } = useLocales();
   const { mainNav } = useNavConfig();
 
   return (

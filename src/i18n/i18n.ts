@@ -9,7 +9,6 @@ import { toast } from 'sonner';
 
 import { isProduction } from '@/lib/isProduction.ts';
 
-// Initialize i18next asynchronously
 async function initializeI18n() {
   await i18next
     .use(initReactI18next)
@@ -20,6 +19,7 @@ async function initializeI18n() {
       supportedLngs: ['en', 'fr', 'ar'],
       fallbackLng: 'en',
       saveMissing: true,
+      lowerCaseLng: true,
       backend: {
         backends: [LocalStorageBackend, HttpBackend],
         backendOptions: [

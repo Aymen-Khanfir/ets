@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { IconBrandFacebook } from '@tabler/icons-react';
 import { Link } from '@tanstack/react-router';
@@ -10,6 +11,8 @@ import { Input } from '@/components/ui/input.tsx';
 import { Textarea } from '@/components/ui/textarea.tsx';
 
 export default function Contact() {
+  const { t } = useTranslation();
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -17,23 +20,25 @@ export default function Contact() {
   });
 
   return (
-    <section className='bg-[#081394] py-20' id='contact'>
+    <section
+      className='bg-primary dark:bg-secondary transition-colors py-20'
+      id='contact'
+    >
       <div className='container mx-auto px-4'>
         <div className='grid md:grid-cols-2 gap-12'>
-          {/* Contact Info */}
-          <div className='text-white space-y-8'>
-            <h2 className='text-4xl md:text-5xl font-bold'>
-              Restons en contact !
+          <div className='space-y-4'>
+            <h2 className='text-background dark:text-primary transition-all duration-300 text-4xl md:text-5xl font-bold'>
+              {t('contact.title')}
             </h2>
 
-            <p className='text-lg'>
-              Vous avez une question ou besoin d&apos;aide ? Contactez-nous par
-              e-mail, par téléphone ou via le formulaire de contact ci-dessous.
-              Nous sommes impatients de vous aider.
+            <p className='text-lg font-Parkinsans font-medium text-muted-foreground dark:text-accent-foreground'>
+              {t('contact.description')}
             </p>
 
             <div className='space-y-6'>
-              <h3 className='text-2xl font-bold'>Siège social:</h3>
+              <h3 className='text-2xl font-bold text-background dark:text-primary'>
+                {t('contact.socials.title')}
+              </h3>
 
               <div className='space-y-4'>
                 <Link
@@ -52,9 +57,9 @@ export default function Contact() {
                   contact@ets-louaticollage.com
                 </Link>
 
-                <div className='flex items-center gap-3'>
+                <div className='flex items-center gap-3 hover:text-gray-200 transition-colors'>
                   <MapPin className='w-5 h-5 flex-shrink-0' />
-                  Route Saltnia km 4 sfax, Tunisia
+                  {t('contact.socials.location')}
                 </div>
               </div>
 
@@ -82,7 +87,7 @@ export default function Contact() {
             <form className='space-y-6'>
               <div>
                 <label htmlFor='name' className='block text-white mb-2'>
-                  Nom et prénom:
+                  {t('contact.form.name')}:
                 </label>
                 <Input
                   id='name'
@@ -98,7 +103,7 @@ export default function Contact() {
 
               <div>
                 <label htmlFor='email' className='block text-white mb-2'>
-                  Email:
+                  {t('contact.form.email')}:
                 </label>
                 <Input
                   id='email'
@@ -114,7 +119,7 @@ export default function Contact() {
 
               <div>
                 <label htmlFor='message' className='block text-white mb-2'>
-                  Message:
+                  {t('contact.form.message')}:
                 </label>
                 <Textarea
                   id='message'
@@ -136,7 +141,7 @@ export default function Contact() {
                   toast.success('Votre message a été envoyé avec succès')
                 }
               >
-                Soumettre
+                {t('contact.form.send')}
               </Button>
             </form>
           </div>

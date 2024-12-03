@@ -15,10 +15,11 @@
     "format:project": "pnpm exec prettier . --write",
     "prepare": "husky",
     "commitlint": "commitlint --edit",
-    "resources": "i18next-resources-for-ts interface -i ./public/locales/en -o src/types/resources.d.ts"
+    "resources": "i18next-resources-for-ts interface -i public/locales/en -o src/types/resources.d.ts"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.2",
+    "@radix-ui/react-direction": "^1.1.0",
     "@radix-ui/react-dropdown-menu": "^2.1.2",
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-popover": "^1.1.2",

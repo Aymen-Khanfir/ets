@@ -1,8 +1,12 @@
+import { useTranslation } from 'react-i18next';
+
 import { IconBrandFacebook } from '@tabler/icons-react';
 import { Link } from '@tanstack/react-router';
 import { MessageCircle } from 'lucide-react';
 
 export default function Footer() {
+  const { t } = useTranslation();
+
   return (
     <footer className="w-full bg-[url('/placeholder.svg')] bg-cover bg-center py-16">
       <div className='container mx-auto px-4 flex flex-col items-center gap-8'>
@@ -15,12 +19,12 @@ export default function Footer() {
 
         {/* Tagline */}
         <div className='text-center text-xl tracking-wide'>
-          LA MEILLEURE SOLUTION À TOUS VOS BESOINS EN COLLAGE
+          {t('footer.description')}
         </div>
 
         {/* Copyright */}
         <div className='text-[#14137D] text-center'>
-          © 2024 ETS LOUATI COLLAGE, All Rights Reserved
+          {t('footer.copyright', { year: new Date().getFullYear() })}
         </div>
 
         {/* Social Links */}

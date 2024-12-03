@@ -4,7 +4,6 @@ import { createRouter, RouterProvider } from '@tanstack/react-router';
 
 import { useLocales } from '@/hooks/use-locales.ts';
 
-import { useAllLanguages } from '@/config/language-config.tsx';
 import { ThemeProvider } from '@/context/theme-context.tsx';
 import i18n from '@/i18n/i18n.ts';
 
@@ -25,14 +24,16 @@ declare module '@tanstack/react-router' {
 }
 
 function App() {
-  const allLanguages = useAllLanguages();
-  const { dir } = useLocales(allLanguages);
+  const { dir } = useLocales();
 
   return (
     <I18nextProvider i18n={i18n} defaultNS={'translation'}>
       <ThemeProvider defaultTheme='light' storageKey='vite-ui-theme'>
         <RouterProvider router={router} />
-        <Toaster position={dir === 'ltr' ? 'bottom-right' : 'bottom-left'} />
+        <Toaster
+          position={dir === 'ltr' ? 'bottom-right' : 'bottom-left'}
+          className='z-50'
+        />
       </ThemeProvider>
     </I18nextProvider>
   );

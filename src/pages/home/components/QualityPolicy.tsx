@@ -1,27 +1,27 @@
+import { useTranslation } from 'react-i18next';
+
 import Quality1 from '@/assets/images/quality1.png';
 import Quality2 from '@/assets/images/quality2.png';
 
 export default function QualityPolicy() {
+  const { t } = useTranslation();
+
   return (
     <section className='py-20' id='quality'>
       <div className='container mx-auto px-4'>
         {/* Header */}
         <div className='text-center mb-16 space-y-4'>
-          <h3 className='text-gray-600 text-lg'>DÉCOUVRIR</h3>
-          <h2 className='text-[#081394] text-3xl md:text-4xl font-bold'>
-            NOTRE POLITIQUE DE QUALITÉ
+          <h3 className='text-muted-foreground text-lg'>
+            {t('quality.title')}
+          </h3>
+          <h2 className='text-primary text-3xl md:text-4xl font-bold'>
+            {t('quality.subtitle')}
           </h2>
         </div>
 
         {/* Description */}
         <div className='max-w-4xl mx-auto text-center mb-16'>
-          <p className='text-gray-800 text-lg leading-relaxed'>
-            Chez ETS Louati Collage, nous mettons un point d&apos;honneur à
-            offrir un travail de qualité supérieure. Grâce à des matériaux de
-            premier choix et des techniques de collage avancées, nous
-            garantissons des produits durables et parfaitement finis, répondant
-            aux plus hauts standards pour satisfaire nos clients.
-          </p>
+          <p className=' text-lg leading-relaxed'>{t('quality.description')}</p>
         </div>
 
         {/* Service Cards */}
