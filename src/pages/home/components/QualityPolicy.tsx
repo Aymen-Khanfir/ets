@@ -7,66 +7,35 @@ export default function QualityPolicy() {
   const { t } = useTranslation();
 
   return (
-    <section className='py-20' id='quality'>
-      <div className='container mx-auto px-4'>
-        {/* Header */}
-        <div className='text-center mb-16 space-y-4'>
-          <h3 className='text-muted-foreground text-lg'>
+    <section className='py-10 sm:py-14' id='quality'>
+      <div className='container grid gap-3 md:gap-4 lg:gap-8 items-center mx-auto max-w-4xl transition-all text-center'>
+        <div>
+          <h3 className='text-muted-foreground text-[0.75rem] sm:text-sm lg:text-base uppercase tracking-widest'>
             {t('quality.title')}
           </h3>
-          <h2 className='text-primary text-3xl md:text-4xl font-bold'>
+          <h2 className='text-primary font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold capitalize transition-all tracking-tight'>
             {t('quality.subtitle')}
           </h2>
         </div>
-
-        {/* Description */}
-        <div className='max-w-4xl mx-auto text-center mb-16'>
-          <p className=' text-lg leading-relaxed'>{t('quality.description')}</p>
+        <div className='max-w-sm sm:max-w-xl md:max-w-3xl lg:max-w-4xl justify-self-center'>
+          <p className='text-[0.75rem] sm:text-base md:text-lg lg:text-xl leading-relaxed'>
+            {t('quality.description')}
+          </p>
         </div>
-
-        {/* Service Cards */}
-        <div className='grid md:grid-cols-2 gap-8 max-w-5xl mx-auto'>
-          {/* Applications Card */}
-          <div className='relative aspect-[4/3] rounded-lg overflow-hidden'>
+        <div className='grid sm:grid-cols-2 items-center md:gap-8 max-w-5xl mx-auto px-4'>
+          <div className='aspect-square'>
             <img
               src={Quality1}
               alt='Applications diverses dans le domaine du collage'
-              className='object-cover'
+              className='object-cover rounded-lg w-11/12 md:w-11/12 justify-self-center'
             />
-            <div className='absolute inset-0 bg-gradient-to-t from-[#081394]/90 to-transparent flex flex-col justify-end p-6'>
-              <h3 className='text-white text-sm mb-2'>
-                Mode, Mobilier, Automobile, et Plus Encore!
-              </h3>
-              <p className='text-white text-2xl font-bold'>
-                APPLICATIONS
-                <br />
-                POLYVALENTES
-              </p>
-            </div>
           </div>
-
-          {/* Quality Card */}
-          <div className='relative aspect-[4/3] rounded-lg overflow-hidden'>
+          <div className='aspect-square'>
             <img
               src={Quality2}
               alt='Processus de collage de qualité'
-              className='object-cover'
+              className='object-cover rounded-lg w-11/12 md:w-11/12 justify-self-center'
             />
-            <div className='absolute inset-0 bg-gradient-to-t from-[#081394]/90 to-transparent flex flex-col justify-end p-6'>
-              <div className='absolute top-6 right-6'>
-                <div className='bg-yellow-400 rounded-full p-2'>
-                  <span className='text-xs font-bold text-[#081394]'>100%</span>
-                  <span className='block text-[0.6rem] text-[#081394]'>
-                    QUALITÉ
-                  </span>
-                </div>
-              </div>
-              <h3 className='text-white text-2xl font-bold'>
-                COLLAGE DE
-                <br />
-                QUALITÉ
-              </h3>
-            </div>
           </div>
         </div>
       </div>

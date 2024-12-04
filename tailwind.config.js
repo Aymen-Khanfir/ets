@@ -5,6 +5,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
+        primary: ['Inter', 'sans-serif'],
         Parkinsans: ['Parkinsans', 'sans-serif'],
         Lato: ['Lato', 'sans-serif'],
       },

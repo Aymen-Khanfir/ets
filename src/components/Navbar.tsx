@@ -36,7 +36,7 @@ export default function Navbar() {
       transition={{ duration: 0.35, ease: 'easeInOut' }}
       className='sticky top-0 z-50 w-full bg-background/95 backdrop-blur overflow-hidden supports-[backdrop-filter]:bg-background/60'
     >
-      <div className='flex h-14 md:h-20 items-center px-4'>
+      <div className='flex h-14 md:h-20 items-center px-4 gap-2'>
         <MainNav />
         <MobileNav />
         <div className='flex flex-1 items-center justify-between gap-2 md:justify-end'>
@@ -59,8 +59,8 @@ function MainNav() {
   const { mainNav } = useNavConfig();
 
   return (
-    <div className='hidden md:flex md:gap-3'>
-      <Link to='/' className='mr-2 lg:mr-6'>
+    <div className='hidden md:flex lg:gap-3'>
+      <Link to='/' className='me-2 lg:me-6'>
         <Icons.logo className='h-20 w-20 lg:h-24 lg:w-24 text-primary' />
       </Link>
       <nav className='flex items-center gap-1 xl:gap-3'>
@@ -75,7 +75,7 @@ function MainNav() {
             >
               <Button
                 variant='ghost'
-                className='text-md font-Lato hover:text-primary md:p-3'
+                className='sm:text-[0.8rem] lg:text-[1rem] font-Lato hover:text-primary lg:p-3'
               >
                 {link.label}
               </Button>
