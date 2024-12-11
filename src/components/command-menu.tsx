@@ -7,9 +7,6 @@ import { useLocales } from '@/hooks/use-locales.ts';
 
 import { cn } from '@/lib/utils.ts';
 
-import { useNavConfig } from '@/config/nav-config.tsx';
-import { type DialogProps } from '@radix-ui/react-dialog';
-
 import { Button } from '@/components/ui/button.tsx';
 import {
   CommandItem,
@@ -19,6 +16,8 @@ import {
   CommandInput,
   CommandDialog,
 } from '@/components/ui/command.tsx';
+import { useNavConfig } from '@/config/nav-config.tsx';
+import { type DialogProps } from '@radix-ui/react-dialog';
 
 export function CommandMenu({ ...props }: DialogProps) {
   const [open, setOpen] = React.useState(false);

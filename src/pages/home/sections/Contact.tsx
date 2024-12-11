@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { IconBrandFacebook } from '@tabler/icons-react';
-import { Link } from '@tanstack/react-router';
 import { Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
 import { toast } from 'sonner';
 
 import { Button } from '@/components/ui/button.tsx';
 import { Input } from '@/components/ui/input.tsx';
+import { LinkPreview } from '@/components/ui/link-preview.tsx';
 import { Textarea } from '@/components/ui/textarea.tsx';
 
 export default function Contact() {
@@ -21,63 +21,67 @@ export default function Contact() {
 
   return (
     <section
-      className='bg-primary dark:bg-secondary transition-colors py-20'
+      className='bg-primary dark:bg-secondary py-10 sm:py-14'
       id='contact'
     >
-      <div className='container mx-auto px-4'>
-        <div className='grid md:grid-cols-2 gap-12'>
-          <div className='space-y-4'>
-            <h2 className='text-background dark:text-primary transition-all duration-300 text-4xl md:text-5xl font-bold'>
+      <div className='w-11/12 mx-auto transition-all duration-300'>
+        <div className='grid sm:grid-cols-2 gap-12'>
+          <div className='space-y-3'>
+            <h2 className='text-background dark:text-primary font-serif text-2xl md:text-3xl lg:text-5xl font-bold capitalize transition-all'>
               {t('contact.title')}
             </h2>
 
-            <p className='text-lg font-Parkinsans font-medium text-muted-foreground dark:text-accent-foreground'>
+            <p className='text-secondary dark:text-accent-foreground text-sm md:text-base lg:text-xl transition-all'>
               {t('contact.description')}
             </p>
 
-            <div className='space-y-6'>
-              <h3 className='text-2xl font-bold text-background dark:text-primary'>
+            <div className='space-y-5'>
+              <h3 className='text-background dark:text-primary font-serif text-xl md:text-2xl lg:text-3xl font-bold capitalize transition-all mt-5'>
                 {t('contact.socials.title')}
               </h3>
 
               <div className='space-y-4'>
-                <Link
+                <a
                   href='tel:+21628774410'
-                  className='flex items-center gap-3 hover:text-gray-200 transition-colors'
+                  className='text-secondary dark:text-accent-foreground hover:underline flex items-center gap-3 transition-colors w-fit'
                 >
                   <Phone className='w-5 h-5' />
-                  +21628774410
-                </Link>
-
-                <Link
+                  28 774 410
+                </a>
+                <a
                   href='mailto:contact@ets-louaticollage.com'
-                  className='flex items-center gap-3 hover:text-gray-200 transition-colors'
+                  className='text-secondary dark:text-accent-foreground hover:underline flex items-center gap-3 transition-colors w-fit'
                 >
                   <Mail className='w-5 h-5' />
                   contact@ets-louaticollage.com
-                </Link>
-
-                <div className='flex items-center gap-3 hover:text-gray-200 transition-colors'>
+                </a>
+                <a
+                  href='https://www.google.com/maps/search/?api=1&query=34.783870, 10.797482'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='text-secondary dark:text-accent-foreground hover:underline flex items-center gap-3 transition-colors w-fit'
+                >
                   <MapPin className='w-5 h-5 flex-shrink-0' />
                   {t('contact.socials.location')}
-                </div>
+                </a>
               </div>
 
-              <div className='flex gap-4 pt-4'>
-                <Link
-                  href='/public'
-                  className='bg-white p-2 rounded-full text-[#081394] hover:bg-gray-100 transition-colors'
+              <div className='flex gap-4'>
+                <LinkPreview
+                  url='https://www.facebook.com/people/ETS-Louati-collage/61561505849810/'
+                  className='bg-background hover:bg-accent hover:text-accent-foreground p-2 rounded-full text-[#081394] transition-colors'
                 >
                   <IconBrandFacebook stroke={2} />
                   <span className='sr-only'>Facebook</span>
-                </Link>
-                <Link
-                  to='/'
-                  className='bg-white p-2 rounded-full text-[#081394] hover:bg-gray-100 transition-colors'
+                </LinkPreview>
+
+                <LinkPreview
+                  url='https://web.whatsapp.com/'
+                  className='bg-background hover:bg-accent hover:text-accent-foreground p-2 rounded-full text-[#081394] transition-colors'
                 >
                   <MessageCircle className='w-6 h-6' />
                   <span className='sr-only'>WhatsApp</span>
-                </Link>
+                </LinkPreview>
               </div>
             </div>
           </div>

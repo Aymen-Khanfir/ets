@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
 import AboutImage from '@/assets/images/about_image.png';
-
 import { Button } from '@/components/ui/button.tsx';
 
 export default function About() {
@@ -15,7 +14,7 @@ export default function About() {
             <h2 className='text-background dark:text-primary font-serif text-2xl md:text-3xl lg:text-5xl font-bold capitalize transition-all'>
               {t('about.title')}
             </h2>
-            <p className='text-[#717282] dark:text-accent-foreground text-sm md:text-base lg:text-xl leading-relaxed transition-all'>
+            <p className='text-secondary dark:text-accent-foreground text-sm md:text-base lg:text-xl leading-relaxed transition-all'>
               {t('about.description')}
             </p>
             <Button
