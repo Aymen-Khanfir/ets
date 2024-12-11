@@ -54,7 +54,11 @@
       "message": "Message",
       "message_error": "Message must be at least {{count}} characters long",
       "message_characters_left": "{{count}} characters left",
-      "send": "Submit"
+      "is_validating": "Validating...",
+      "submit": "Submit",
+      "reset": "Reset",
+      "submit_invalid": "Please fix the errors before submitting",
+      "submit_success": "Message sent successfully"
     }
   },
   "footer": {

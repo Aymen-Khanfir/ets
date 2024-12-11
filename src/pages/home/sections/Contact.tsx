@@ -36,7 +36,7 @@ export default function Contact() {
                   className='text-secondary dark:text-accent-foreground hover:underline flex items-center gap-3 transition-colors w-fit rtl:text-left'
                 >
                   <Phone className='w-5 h-5' />
-                  28 774 410
+                  <p dir='ltr'>28 774 410</p>
                 </a>
                 <a
                   href='mailto:contact@ets-louaticollage.com'
@@ -77,7 +77,7 @@ export default function Contact() {
           </div>
 
           {/* Contact Form */}
-          <div>
+          <div className='xl:w-4/5 xl:justify-self-center'>
             <ContactForm />
           </div>
         </div>

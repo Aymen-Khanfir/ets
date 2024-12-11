@@ -17,11 +17,16 @@ import { Button } from '@/components/ui/button.tsx';
 import { Input } from '@/components/ui/input.tsx';
 import { Label } from '@/components/ui/label.tsx';
 import { Textarea } from '@/components/ui/textarea.tsx';
-import { ContactSchema, ContactFormType } from '@/schema/contact-schema.ts';
+import {
+  ContactFormType,
+  createContactSchema,
+} from '@/schema/contact-schema.ts';
 
 export function ContactForm() {
   const { t } = useTranslation();
   const { countryData, error } = useLoaderData({ from: '/' });
+
+  const contactSchema = createContactSchema(t);
 
   const {
     characterCount,
@@ -42,18 +47,18 @@ export function ContactForm() {
     },
     validatorAdapter: zodValidator(),
     validators: {
-      onChange: ContactSchema,
+      onChange: contactSchema,
     },
     asyncDebounceMs: 500,
     onSubmitInvalid: () => {
-      toast.error('Please fix the errors before submitting', {
+      toast.error(t('contact.form.submit', { context: 'invalid' }), {
         richColors: true,
       });
     },
     onSubmit: ({ value }) => {
       value = { ...value, phone: stripPhoneNumber(value.phone) };
 
-      toast.success('User created successfully', {
+      toast.success(t('contact.form.submit', { context: 'success' }), {
         richColors: true,
         description: <pre>{JSON.stringify(value, null, 2)}</pre>,
       });
@@ -196,7 +201,7 @@ export function ContactForm() {
             reset();
           }}
         >
-          Reset
+          {t('contact.form.reset')}
         </Button>
         <Subscribe
           selector={(state) => ({
@@ -207,11 +212,13 @@ export function ContactForm() {
         >
           {({ canSubmit, isValidating, isSubmitting }) => (
             <Button
-              className='bg-white text-[#081394] hover:bg-gray-100 w-full md:w-auto'
+              className='bg-white text-[#081394] hover:bg-gray-100'
               disabled={!canSubmit || isValidating}
               type='submit'
             >
-              {isSubmitting ? 'Validating...' : t('contact.form.send')}
+              {isSubmitting
+                ? t('contact.form.is_validating')
+                : t('contact.form.submit')}
             </Button>
           )}
         </Subscribe>
@@ -221,6 +228,7 @@ export function ContactForm() {
 }
 
 function FieldInfo({ fieldMeta }: { fieldMeta: FieldMeta | undefined }) {
+  const { t } = useTranslation();
   if (!fieldMeta) return null;
 
   return (
@@ -232,7 +240,7 @@ function FieldInfo({ fieldMeta }: { fieldMeta: FieldMeta | undefined }) {
             </p>
           ))
         : null}
-      {fieldMeta.isValidating ? 'Validating...' : null}
+      {fieldMeta.isValidating ? t('contact.form.is_validating') : null}
     </>
   );
 }

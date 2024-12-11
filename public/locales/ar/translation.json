@@ -54,7 +54,11 @@
       "message": "الرسالة",
       "message_error": "يجب أن تحتوي الرسالة على  {{count}} حرف على الأقل",
       "message_characters_left": "{{count}} حرف متبقي",
-      "send": "إرسال"
+      "is_validating": "التحقق...",
+      "submit": "إرسال",
+      "reset": "إعادة تعيين",
+      "submit_invalid": "يرجى تصحيح الأخطاء قبل التقديم",
+      "submit_success": "تم إرسال الرسالة بنجاح"
     }
   },
   "footer": {
