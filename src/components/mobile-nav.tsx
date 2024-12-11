@@ -4,8 +4,6 @@ import { useLocales } from '@/hooks/use-locales.ts';
 
 import { cn } from '@/lib/utils.ts';
 
-import { useNavConfig } from '@/config/nav-config.tsx';
-
 import { Icons } from '@/components/icons.tsx';
 import { SwitchLanguage } from '@/components/switch-language.tsx';
 import { Button } from '@/components/ui/button.tsx';
@@ -19,6 +17,7 @@ import {
   SheetContent,
   SheetTrigger,
 } from '@/components/ui/sheet.tsx';
+import { useNavConfig } from '@/config/nav-config.tsx';
 
 export function MobileNav() {
   const { dir } = useLocales();

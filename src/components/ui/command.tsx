@@ -5,14 +5,13 @@ import { Search } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 
-import { type DialogProps } from '@radix-ui/react-dialog';
-
 import {
   Dialog,
   DialogTitle,
   DialogContent,
   DialogDescription,
 } from '@/components/ui/dialog';
+import { type DialogProps } from '@radix-ui/react-dialog';
 
 const Command = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive>,
