@@ -18,7 +18,6 @@ import {
 } from '@/components/ui/command.tsx';
 import { useNavConfig } from '@/config/nav-config.tsx';
 import { type DialogProps } from '@radix-ui/react-dialog';
-
 export function CommandMenu({ ...props }: DialogProps) {
   const [open, setOpen] = React.useState(false);
   const { sectorsNav } = useNavConfig();

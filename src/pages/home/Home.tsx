@@ -1,11 +1,11 @@
 import MainLayout from '@/components/layouts/main-layout.tsx';
 import BlurFade from '@/components/ui/blur-fade.tsx';
 
-import About from '@/pages/home/components/About.tsx';
-import Contact from '@/pages/home/components/Contact.tsx';
-import Hero from '@/pages/home/components/Hero.tsx';
-import QualityPolicy from '@/pages/home/components/QualityPolicy.tsx';
-import { Sectors2 } from '@/pages/home/components/Sectors.tsx';
+import About from '@/pages/home/sections/About.tsx';
+import Contact from '@/pages/home/sections/Contact.tsx';
+import Hero from '@/pages/home/sections/Hero.tsx';
+import QualityPolicy from '@/pages/home/sections/QualityPolicy.tsx';
+import { Sectors2 } from '@/pages/home/sections/Sectors.tsx';
 
 function Home() {
   return (

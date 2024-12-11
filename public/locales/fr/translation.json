@@ -46,8 +46,14 @@
     },
     "form": {
       "name": "Nom et prénom",
+      "name_error": "Le nom d'utilisateur doit comporter au moins 3 caractères",
       "email": "E-mail",
+      "email_error": "L'email doit être un email valide",
+      "phone": "Numéro de téléphone",
+      "phone_error": "Le numéro de téléphone doit être composé de 8 chiffres",
       "message": "Message",
+      "message_error": "Le message doit comporter au moins {{count}} caractères",
+      "message_characters_left": "{{count}} caractères restants",
       "send": "Soumettre"
     }
   },

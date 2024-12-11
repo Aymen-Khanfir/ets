@@ -24,7 +24,7 @@ export function useNavConfig(): NavConfig {
       },
       {
         title: t('search_nav.shoes'),
-        href: '/docs/components/accordion',
+        href: '/docs/sections/accordion',
       },
       {
         title: t('search_nav.automotive'),

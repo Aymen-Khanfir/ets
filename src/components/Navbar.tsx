@@ -3,15 +3,13 @@ import { useState } from 'react';
 import { Link } from '@tanstack/react-router';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 
-import { useNavConfig } from '@/config/nav-config.tsx';
-
+import { CommandMenu } from '@/components/command-menu.tsx';
 import { Icons } from '@/components/icons.tsx';
 import { MobileNav } from '@/components/mobile-nav.tsx';
 import { ModeToggle } from '@/components/mode-toggle.tsx';
 import { SwitchLanguage } from '@/components/switch-language.tsx';
 import { Button } from '@/components/ui/button.tsx';
-
-import { CommandMenu } from '@/pages/home/components/command-menu.tsx';
+import { useNavConfig } from '@/config/nav-config.tsx';
 
 export default function Navbar() {
   const [hidden, setHidden] = useState<boolean>(false);

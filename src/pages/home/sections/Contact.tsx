@@ -1,23 +1,13 @@
-import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { IconBrandFacebook } from '@tabler/icons-react';
 import { Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
-import { toast } from 'sonner';
 
-import { Button } from '@/components/ui/button.tsx';
-import { Input } from '@/components/ui/input.tsx';
+import { ContactForm } from '@/components/contact-form.tsx';
 import { LinkPreview } from '@/components/ui/link-preview.tsx';
-import { Textarea } from '@/components/ui/textarea.tsx';
 
 export default function Contact() {
   const { t } = useTranslation();
-
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
 
   return (
     <section
@@ -43,7 +33,7 @@ export default function Contact() {
               <div className='space-y-4'>
                 <a
                   href='tel:+21628774410'
-                  className='text-secondary dark:text-accent-foreground hover:underline flex items-center gap-3 transition-colors w-fit'
+                  className='text-secondary dark:text-accent-foreground hover:underline flex items-center gap-3 transition-colors w-fit rtl:text-left'
                 >
                   <Phone className='w-5 h-5' />
                   28 774 410
@@ -88,7 +78,16 @@ export default function Contact() {
 
           {/* Contact Form */}
           <div>
-            <form className='space-y-6'>
+            <ContactForm />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/*
+* <form className='space-y-6'>
               <div>
                 <label htmlFor='name' className='block text-white mb-2'>
                   {t('contact.form.name')}:
@@ -148,9 +147,4 @@ export default function Contact() {
                 {t('contact.form.send')}
               </Button>
             </form>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
+* */
