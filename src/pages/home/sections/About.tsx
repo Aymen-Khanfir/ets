@@ -1,5 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
+import { Link } from '@tanstack/react-router';
+
 import AboutImage from '@/assets/images/about_image.png';
 import { Button } from '@/components/ui/button.tsx';
 
@@ -17,13 +19,15 @@ export default function About() {
             <p className='text-secondary dark:text-accent-foreground text-sm md:text-base lg:text-xl leading-relaxed transition-all'>
               {t('about.description')}
             </p>
-            <Button
-              variant='outline'
-              className='capitalize dark:active:border-blue-300'
-              size='lg'
-            >
-              {t('main_nav.contact', { context: 'large' })}
-            </Button>
+            <Link hash='contact'>
+              <Button
+                variant='outline'
+                className='capitalize dark:active:border-blue-300 mt-4'
+                size='lg'
+              >
+                {t('main_nav.contact', { context: 'large' })}
+              </Button>
+            </Link>
           </div>
           <div className='w-2/3 sm:w-full max-w-lg justify-self-center sm:justify-self-end order-1 sm:order-2'>
             <img
