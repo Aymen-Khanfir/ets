@@ -1,12 +1,13 @@
 import { useTranslation } from 'react-i18next';
 
-import { Icons } from '@/components/icons.tsx';
-
 import { NavItem } from '@/types/nav';
+import { Sector } from '@/types/sector';
+
+import { Icons } from '@/components/icons.tsx';
 
 export interface NavConfig {
   mainNav: NavItem[];
-  sectorsNav: NavItem[];
+  sectorsNav: NavItem[] & Sector[];
 }
 
 export function useNavConfig(): NavConfig {
@@ -17,30 +18,37 @@ export function useNavConfig(): NavConfig {
       {
         title: t('search_nav.lingerie'),
         href: '/',
+        image: '/images/sectors/lingerie.jpg',
       },
       {
         title: t('search_nav.furniture'),
         href: '/docs',
+        image: '/images/sectors/furniture.jpg',
       },
       {
         title: t('search_nav.shoes'),
         href: '/docs/sections/accordion',
+        image: '/images/sectors/shoes.jpg',
       },
       {
         title: t('search_nav.automotive'),
         href: '/blocks',
+        image: '/images/sectors/automotive.jpg',
       },
       {
         title: t('search_nav.orthopedics'),
         href: '/charts',
+        image: '/images/sectors/orthopedics.jpg',
       },
       {
         title: t('search_nav.bags'),
         href: '/themes',
+        image: '/images/sectors/bags.jpg',
       },
       {
         title: t('search_nav.work_clothes'),
         href: '/colors',
+        image: '/images/sectors/work_clothes.jpg',
       },
     ],
     mainNav: [

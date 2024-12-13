@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
-import { Icons } from '@/components/icons.tsx';
-
 import { Language } from '@/types/language';
+
+import { Icons } from '@/components/icons.tsx';
 
 export function useAllLanguages(): Language[] {
   const { t } = useTranslation();

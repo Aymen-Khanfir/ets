@@ -8,7 +8,9 @@ import { useAllLanguages } from '@/config/language-config.tsx';
 export function useLocales() {
   const allLanguages = useAllLanguages();
   const { i18n, t } = useTranslation();
-  const [dir, setDir] = useState(i18n.language === 'ar' ? 'rtl' : 'ltr');
+  const [dir, setDir] = useState<'rtl' | 'ltr'>(
+    i18n.language === 'ar' ? 'rtl' : 'ltr'
+  );
 
   const changeLanguage = useCallback(
     async (lng: string) => {

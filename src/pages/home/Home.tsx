@@ -5,7 +5,7 @@ import About from '@/pages/home/sections/About.tsx';
 import Contact from '@/pages/home/sections/Contact.tsx';
 import Hero from '@/pages/home/sections/Hero.tsx';
 import QualityPolicy from '@/pages/home/sections/QualityPolicy.tsx';
-import { Sectors2 } from '@/pages/home/sections/Sectors.tsx';
+import Sectors from '@/pages/home/sections/Sectors.tsx';
 
 function Home() {
   return (
@@ -13,7 +13,7 @@ function Home() {
       <BlurFade delay={0.2} inView>
         <Hero />
       </BlurFade>
-      <Sectors2 />
+      <Sectors />
       <About />
       <QualityPolicy />
       <Contact />
