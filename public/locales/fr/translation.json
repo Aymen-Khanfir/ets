@@ -1,0 +1,68 @@
+{
+  "english": "Anglais",
+  "french": "Français",
+  "arabic": "Arabe",
+  "language_changed": "La langue a été changée en Français",
+  "language_current": "Langue actuelle est: {{lang}}",
+  "language_change_failed": "Échec du changement de langue",
+  "main_nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "sectors": "Secteurs",
+    "quality": "Qualité",
+    "contact": "Contact",
+    "contact_large": "Contactez-nous"
+  },
+  "search_nav": {
+    "lingerie": "Lingerie",
+    "furniture": "Ameublement",
+    "shoes": "Chaussures",
+    "automotive": "Automobile",
+    "orthopedics": "Orthopédie",
+    "bags": "Sacs",
+    "work_clothes": "Vêtements de travail"
+  },
+  "search": "Rechercher",
+  "search_large_text": "Rechercher des secteurs",
+  "search_no_result": "Aucun résultat trouvé!",
+  "hero": {
+    "description": "Votre partenaire idéal pour des solutions de contre-collage sur mesure!"
+  },
+  "about": {
+    "title": "Votre partenaire idéal pour des solutions de contre-collage sur mesure!",
+    "description": "ETS Louati Collage, avec plus de 30 ans d'expérience dans l'industrie textile, est spécialisé dans le contre-collage de textiles et divers matériaux. Nous garantissons des résultats de haute qualité et durables."
+  },
+  "quality": {
+    "title": "Découvrir",
+    "subtitle": "Notre politique de qualité",
+    "description": "Chez ETS Louati Collage, nous mettons un point d'honneur à offrir un travail de qualité supérieure. Grâce à des matériaux de premier choix et des techniques de collage avancées, nous garantissons des produits durables et parfaitement finis, répondant aux plus hauts standards pour satisfaire nos clients."
+  },
+  "contact": {
+    "title": "Restons en contact",
+    "description": "Vous avez une question ou besoin d'aide ? Contactez-nous par e-mail, par téléphone ou via le formulaire de contact ci-dessous. Nous sommes impatients de vous aider.",
+    "socials": {
+      "title": "Siège social",
+      "location": "Route Saltnia km 4 Sfax, Tunisie"
+    },
+    "form": {
+      "name": "Nom et prénom",
+      "name_error": "Le nom d'utilisateur doit comporter au moins 3 caractères",
+      "email": "E-mail",
+      "email_error": "L'email doit être un email valide",
+      "phone": "Numéro de téléphone",
+      "phone_error": "Le numéro de téléphone doit être composé de 8 chiffres",
+      "message": "Message",
+      "message_error": "Le message doit comporter au moins {{count}} caractères",
+      "message_characters_left": "{{count}} caractères restants",
+      "is_validating": "Validation...",
+      "submit": "Soumettre",
+        "reset": "Réinitialiser",
+      "submit_invalid": "Veuillez corriger les erreurs avant de soumettre",
+      "submit_success": "Message envoyé avec succès"
+    }
+  },
+  "footer": {
+    "description": "La meilleure solution à tous vos besoins en collage",
+    "copyright": "© ETS LOUATI COLLAGE {{year}}, Tous droits réservés"
+  }
+}
