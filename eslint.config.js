@@ -5,6 +5,7 @@ import reactRefresh from 'eslint-plugin-react-refresh';
 import tseslint from 'typescript-eslint';
 import react from 'eslint-plugin-react';
 import perfectionist from 'eslint-plugin-perfectionist';
+import pluginRouter from '@tanstack/eslint-plugin-router';
 
 export default tseslint.config(
   { ignores: ['dist'] },
@@ -13,6 +14,7 @@ export default tseslint.config(
       js.configs.recommended,
       ...tseslint.configs.strictTypeChecked,
       ...tseslint.configs.stylisticTypeChecked,
+      ...pluginRouter.configs['flat/recommended'],
     ],
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
@@ -63,13 +65,13 @@ export default tseslint.config(
             ['external', 'builtin', 'tanstack', 'tabler-icons', 'lucide-icons'],
             'custom-features',
             'custom-routes',
+            'custom-types',
             'custom-hooks',
             'custom-utils',
             'internal',
             'custom-components',
-            'custom-sections',
+            'custom-pages',
             'custom-auth',
-            'custom-types',
             'style',
             ['parent', 'sibling', 'index'],
             ['parent-type', 'sibling-type', 'index-type'],
@@ -88,8 +90,8 @@ export default tseslint.config(
               'custom-utils': '@/lib/*',
               'custom-types': '@/types/*',
               'custom-routes': '@/routes/*',
-              'custom-sections': '@/sections/*',
-              'custom-components': '@/components/*',
+              'custom-pages': '@/pages/*',
+              'custom-components': '@/sections/*',
             },
           },
           internalPattern: ['@/*'],
