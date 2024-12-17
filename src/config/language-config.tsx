@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { Language } from '@/types/language';
 
-import { Icons } from '@/components/icons.tsx';
+import { Icons } from '@/components/shared/icons.tsx';
 
 export function useAllLanguages(): Language[] {
   const { t } = useTranslation();

@@ -7,7 +7,7 @@ import HttpBackend from 'i18next-http-backend';
 import LocalStorageBackend from 'i18next-localstorage-backend';
 import { toast } from 'sonner';
 
-import { isProduction } from '@/lib/isProduction.ts';
+import { isProduction } from '@/lib/is-production.ts';
 
 async function initializeI18n() {
   await i18next

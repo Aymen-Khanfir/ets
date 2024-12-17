@@ -3,11 +3,11 @@ import { useTranslation } from 'react-i18next';
 import { NavItem } from '@/types/nav';
 import { Sector } from '@/types/sector';
 
-import { Icons } from '@/components/icons.tsx';
+import { Icons } from '@/components/shared/icons.tsx';
 
 export interface NavConfig {
   mainNav: NavItem[];
-  sectorsNav: NavItem[] & Sector[];
+  sectorsNav: (NavItem & Sector)[];
 }
 
 export function useNavConfig(): NavConfig {
@@ -17,37 +17,37 @@ export function useNavConfig(): NavConfig {
     sectorsNav: [
       {
         title: t('search_nav.lingerie'),
-        href: '/',
+        href: 'lingerie',
         image: '/images/sectors/lingerie.jpg',
       },
       {
         title: t('search_nav.furniture'),
-        href: '/docs',
+        href: 'furniture',
         image: '/images/sectors/furniture.jpg',
       },
       {
         title: t('search_nav.shoes'),
-        href: '/docs/sections/accordion',
+        href: 'shoes',
         image: '/images/sectors/shoes.jpg',
       },
       {
         title: t('search_nav.automotive'),
-        href: '/blocks',
+        href: 'automotive',
         image: '/images/sectors/automotive.jpg',
       },
       {
         title: t('search_nav.orthopedics'),
-        href: '/charts',
+        href: 'orthopedics',
         image: '/images/sectors/orthopedics.jpg',
       },
       {
         title: t('search_nav.bags'),
-        href: '/themes',
+        href: 'bags',
         image: '/images/sectors/bags.jpg',
       },
       {
         title: t('search_nav.work_clothes'),
-        href: '/colors',
+        href: 'work-clothes',
         image: '/images/sectors/work_clothes.jpg',
       },
     ],

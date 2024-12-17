@@ -3,8 +3,9 @@ import { useTranslation } from 'react-i18next';
 import { IconBrandFacebook } from '@tabler/icons-react';
 import { Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
 
-import { ContactForm } from '@/components/contact-form.tsx';
 import { LinkPreview } from '@/components/ui/link-preview.tsx';
+
+import { ContactForm } from '@/pages/home/components/contact-form.tsx';
 
 export default function Contact() {
   const { t } = useTranslation();

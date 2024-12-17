@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { IconBrandFacebook } from '@tabler/icons-react';
 import { MessageCircle } from 'lucide-react';
 
-import { Icons } from '@/components/icons.tsx';
+import { Icons } from '@/components/shared/icons.tsx';
 import { LinkPreview } from '@/components/ui/link-preview.tsx';
 
 export default function Footer() {

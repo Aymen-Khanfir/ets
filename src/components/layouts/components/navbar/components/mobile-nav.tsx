@@ -4,8 +4,8 @@ import { useLocales } from '@/hooks/use-locales.ts';
 
 import { cn } from '@/lib/utils.ts';
 
-import { Icons } from '@/components/icons.tsx';
-import { SwitchLanguage } from '@/components/switch-language.tsx';
+import { Icons } from '@/components/shared/icons.tsx';
+import { SwitchLanguage } from '@/components/shared/switch-language.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import { DialogTitle, DialogDescription } from '@/components/ui/dialog.tsx';
 import { ScrollArea } from '@/components/ui/scroll-area.tsx';
@@ -56,6 +56,7 @@ export function MobileNav() {
               {mainNav.map((link) => {
                 return (
                   <Link
+                    to={'/'}
                     hash={link.hash}
                     key={link.label}
                     activeOptions={{ exact: true, includeHash: true }}

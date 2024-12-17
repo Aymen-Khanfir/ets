@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import { ArrowBigUpDash } from 'lucide-react';
 
-import Footer from '@/components/Footer.tsx';
-import Navbar from '@/components/Navbar.tsx';
+import Footer from '@/components/layouts/components/Footer.tsx';
+import Navbar from '@/components/layouts/components/navbar/Navbar.tsx';
 import { Button } from '@/components/ui/button.tsx';
 
 interface MainProps {

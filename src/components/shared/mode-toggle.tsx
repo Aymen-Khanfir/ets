@@ -4,8 +4,8 @@ import { Sun, Moon } from 'lucide-react';
 
 import { useTheme } from '@/hooks/use-theme.tsx';
 
-import { Label } from '@/components/ui/label';
-import { Switch } from '@/components/ui/switch';
+import { Label } from '@/components/ui/label.tsx';
+import { Switch } from '@/components/ui/switch.tsx';
 
 export function ModeToggle() {
   const { theme, toggleTheme } = useTheme();

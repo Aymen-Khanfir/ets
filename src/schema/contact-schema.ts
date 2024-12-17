@@ -1,7 +1,7 @@
 import { TFunction } from 'i18next';
 import { z } from 'zod';
 
-import { isFromTunisia } from '@/lib/isFromTunisia.ts';
+import { isFromTunisia } from '@/lib/is-from-tunisia.ts';
 
 export const createContactSchema = (t: TFunction) =>
   z

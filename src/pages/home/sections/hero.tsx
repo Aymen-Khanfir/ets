@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import HeroImage from '@/assets/images/hero_image.png';
-import { Icons } from '@/components/icons.tsx';
+import { Icons } from '@/components/shared/icons.tsx';
 
 export default function Hero() {
   const { t } = useTranslation();

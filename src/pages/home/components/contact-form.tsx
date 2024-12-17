@@ -11,7 +11,7 @@ import {
   stripPhoneNumber,
   formatPhoneNumber,
 } from '@/lib/helpers/format-phone-number.ts';
-import { isFromTunisia } from '@/lib/isFromTunisia.ts';
+import { isFromTunisia } from '@/lib/is-from-tunisia.ts';
 
 import { Button } from '@/components/ui/button.tsx';
 import { Input } from '@/components/ui/input.tsx';
