@@ -15,7 +15,7 @@ export default function Sectors2() {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: 'start',
     loop: true,
-    skipSnaps: false,
+    skipSnaps: true,
   });
   const [selectedIndex, setSelectedIndex] = React.useState(0);
 
@@ -26,29 +26,21 @@ export default function Sectors2() {
       const currentIndex = emblaApi.selectedScrollSnap();
       const slideCount = emblaApi.scrollSnapList().length;
 
-      // Calculate distances for both directions
-      const normalDistance = Math.abs(index - currentIndex);
-      const wrapDistance = Math.abs(
-        slideCount - Math.abs(index - currentIndex)
-      );
+      // Determine the wrap-around direction
+      const direction = index > currentIndex ? -1 : 1;
 
-      // Determine the shortest path
-      if (normalDistance <= wrapDistance) {
-        emblaApi.scrollTo(index);
+      if (direction > 0) {
+        // Moving forward (wrap from last slide)
+        emblaApi.scrollTo(slideCount - 1);
+        setTimeout(() => {
+          emblaApi.scrollTo(index);
+        }, 100);
       } else {
-        // Use the wrap-around path
-        const direction = index > currentIndex ? -1 : 1;
-        if (direction > 0) {
-          emblaApi.scrollTo(slideCount - 1);
-          setTimeout(() => {
-            emblaApi.scrollTo(index);
-          }, 100);
-        } else {
-          emblaApi.scrollTo(0);
-          setTimeout(() => {
-            emblaApi.scrollTo(index);
-          }, 50);
-        }
+        // Moving backward (wrap from first slide)
+        emblaApi.scrollTo(0);
+        setTimeout(() => {
+          emblaApi.scrollTo(index);
+        }, 50);
       }
     },
     [emblaApi]

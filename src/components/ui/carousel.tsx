@@ -26,6 +26,7 @@ type CarouselContextProps = {
   api: ReturnType<typeof useEmblaCarousel>[1];
   scrollPrev: () => void;
   scrollNext: () => void;
+  scrollTo: (index: number) => void;
   canScrollPrev: boolean;
   canScrollNext: boolean;
 } & CarouselProps;
@@ -85,6 +86,13 @@ const Carousel = React.forwardRef<
       api?.scrollNext();
     }, [api]);
 
+    const scrollTo = React.useCallback(
+      (index: number) => {
+        api?.scrollTo(index);
+      },
+      [api]
+    );
+
     const handleKeyDown = React.useCallback(
       (event: React.KeyboardEvent<HTMLDivElement>) => {
         if (event.key === 'ArrowLeft') {
@@ -131,6 +139,7 @@ const Carousel = React.forwardRef<
           scrollNext,
           canScrollPrev,
           canScrollNext,
+          scrollTo,
         }}
       >
         <div
@@ -209,7 +218,7 @@ const CarouselPrevious = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        'absolute  h-8 w-8 rounded-full',
+        'absolute h-8 w-8 rounded-full',
         orientation === 'horizontal'
           ? '-left-12 top-1/2 -translate-y-1/2'
           : '-top-12 left-1/2 -translate-x-1/2 rotate-90',
@@ -259,11 +268,42 @@ const CarouselNext = React.forwardRef<
 });
 CarouselNext.displayName = 'CarouselNext';
 
+const CarouselScrollTo = React.forwardRef<
+  HTMLButtonElement,
+  {
+    className?: string;
+    variant?: string;
+    size?: string;
+    index: number;
+  } & React.ComponentProps<typeof Button>
+>(({ className, variant = 'outline', size = 'icon', index, ...props }, ref) => {
+  const { scrollTo } = useCarousel();
+
+  return (
+    <Button
+      ref={ref}
+      variant={variant}
+      size={size}
+      onClick={() => {
+        scrollTo(index);
+      }}
+      className={cn(
+        'w-3 h-3 rounded-full transition-colors duration-300 ease-in-out hover:bg-primary',
+        'border border-primary dark:border-accent-foreground',
+        className
+      )}
+      {...props}
+    />
+  );
+});
+CarouselScrollTo.displayName = 'CarouselScrollTo';
+
 export {
   Carousel,
   CarouselItem,
   CarouselNext,
   CarouselContent,
-  type CarouselApi,
   CarouselPrevious,
+  CarouselScrollTo,
+  type CarouselApi,
 };
