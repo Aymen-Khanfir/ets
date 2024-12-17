@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import Autoplay from 'embla-carousel-autoplay';
 import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
 
 import { Sector } from '@/types/sector';
 
+import { useCarouselBullets } from '@/hooks/use-carousel-bullets.ts';
 import { useLocales } from '@/hooks/use-locales.ts';
-import { useMediaQuery } from '@/hooks/use-media-Query.ts';
 
 import { cn } from '@/lib/utils.ts';
 
@@ -15,7 +15,7 @@ import {
   Carousel,
   CarouselItem,
   CarouselContent,
-  CarouselScrollTo,
+  CarouselBulletNavigation,
 } from '@/components/ui/carousel.tsx';
 import { useNavConfig } from '@/config/nav-config.tsx';
 
@@ -23,44 +23,15 @@ function Sectors() {
   const { sectorsNav } = useNavConfig();
   const { dir } = useLocales();
 
-  const [activeIndex, setActiveIndex] = useState(0);
+  const totalItems = sectorsNav.length;
+  const { bullets } = useCarouselBullets(totalItems);
 
-  const isLg = useMediaQuery('(min-width: 1024px)');
-  const isMd = useMediaQuery('(min-width: 768px) and (max-width: 1023px)');
-  const isSm = useMediaQuery('(min-width: 640px) and (max-width: 767px)');
-  const isXs = useMediaQuery('(max-width: 639px)');
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-  const bulletIndexes = React.useMemo(() => {
-    const lastIndex = sectorsNav.length - 1;
-
-    if (isLg) {
-      return [0, lastIndex];
-    } else if (isMd) {
-      const midIndex = Math.floor(sectorsNav.length / 2);
-
-      return [0, midIndex, lastIndex];
-    } else if (isSm) {
-      const midIndex1 = Math.floor(sectorsNav.length / 3);
-      const midIndex2 = Math.floor((2 * sectorsNav.length) / 3);
-
-      return [0, midIndex1, midIndex2, lastIndex];
-    } else if (isXs) {
-      const midIndex1 = Math.floor(sectorsNav.length / 4);
-      const midIndex2 = Math.floor((2 * sectorsNav.length) / 4);
-      const midIndex3 = Math.floor((3 * sectorsNav.length) / 4);
-
-      return [0, midIndex1, midIndex2, midIndex3, lastIndex];
-    }
-
-    return [];
-  }, [isLg, isMd, isSm, isXs, sectorsNav.length]);
-
-  const handleSlideChange = React.useCallback(
-    (index: number) => {
-      setActiveIndex(index);
-    },
-    [setActiveIndex]
-  );
+  const getActiveBullet = (currentSlide: number) => {
+    const slidesPerBullet = Math.ceil(totalItems / bullets);
+    return Math.min(Math.floor(currentSlide / slidesPerBullet), bullets - 1);
+  };
 
   return (
     <section id='sectors' className='py-10 sm:py-14'>
@@ -73,22 +44,23 @@ function Sectors() {
           skipSnaps: true,
         }}
         plugins={[
-          Autoplay({ delay: 3000, stopOnInteraction: true }),
+          Autoplay({
+            delay: 3000,
+            stopOnInteraction: true,
+            stopOnFocusIn: true,
+          }),
           WheelGesturesPlugin({
             forceWheelAxis: 'x',
           }),
         ]}
         setApi={(api) => {
-          // Update active index on slide change
           api?.on('select', () => {
-            const index = api.selectedScrollSnap();
-            console.log('index', index);
-            handleSlideChange(index);
+            setCurrentSlide(api.selectedScrollSnap());
           });
         }}
       >
         <CarouselContent>
-          {sectorsNav.map((sector: Sector, index) => (
+          {sectorsNav.map((sector: Sector, index: number) => (
             <CarouselItem
               key={index}
               className='basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 cursor-pointer'
@@ -108,15 +80,33 @@ function Sectors() {
             </CarouselItem>
           ))}
         </CarouselContent>
+
         <div className='flex justify-center gap-4 mt-4'>
-          {bulletIndexes.map((bulletIndex, idx) => (
-            <CarouselScrollTo
-              key={idx}
-              index={bulletIndex}
-              className={cn(activeIndex === bulletIndex ? 'bg-primary' : '')}
-              aria-label={`Go to slide ${(bulletIndex + 1).toString()}`}
-            />
-          ))}
+          {Array.from({ length: bullets }).map((_, index) => {
+            let indexToScroll = 0;
+
+            if (index === bullets - 1) {
+              indexToScroll = totalItems - 1;
+            } else if (index > 0) {
+              indexToScroll = Math.round(
+                (index * (totalItems - 1)) / (bullets - 1)
+              );
+            }
+
+            const isActive = getActiveBullet(currentSlide) === index;
+
+            return (
+              <CarouselBulletNavigation
+                key={index}
+                indexToScroll={indexToScroll}
+                className={cn(
+                  isActive
+                    ? 'bg-primary dark:bg-foreground'
+                    : 'hover:bg-primary/80 hover:dark:bg-foreground/80'
+                )}
+              />
+            );
+          })}
         </div>
       </Carousel>
     </section>

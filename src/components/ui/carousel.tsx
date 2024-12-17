@@ -268,35 +268,40 @@ const CarouselNext = React.forwardRef<
 });
 CarouselNext.displayName = 'CarouselNext';
 
-const CarouselScrollTo = React.forwardRef<
+const CarouselBulletNavigation = React.forwardRef<
   HTMLButtonElement,
   {
     className?: string;
     variant?: string;
     size?: string;
-    index: number;
+    indexToScroll: number;
   } & React.ComponentProps<typeof Button>
->(({ className, variant = 'outline', size = 'icon', index, ...props }, ref) => {
-  const { scrollTo } = useCarousel();
+>(
+  (
+    { className, variant = 'ghost', size = 'icon', indexToScroll, ...props },
+    ref
+  ) => {
+    const { scrollTo } = useCarousel();
 
-  return (
-    <Button
-      ref={ref}
-      variant={variant}
-      size={size}
-      onClick={() => {
-        scrollTo(index);
-      }}
-      className={cn(
-        'w-3 h-3 rounded-full transition-colors duration-300 ease-in-out hover:bg-primary',
-        'border border-primary dark:border-accent-foreground',
-        className
-      )}
-      {...props}
-    />
-  );
-});
-CarouselScrollTo.displayName = 'CarouselScrollTo';
+    return (
+      <Button
+        ref={ref}
+        variant={variant}
+        size={size}
+        onClick={() => {
+          scrollTo(indexToScroll);
+        }}
+        className={cn(
+          'w-3 h-3 rounded-full transition-colors duration-300 ease-in-out hover:bg-primary',
+          'border border-primary dark:border-accent-foreground',
+          className
+        )}
+        {...props}
+      />
+    );
+  }
+);
+CarouselBulletNavigation.displayName = 'CarouselBulletNavigation';
 
 export {
   Carousel,
@@ -304,6 +309,6 @@ export {
   CarouselNext,
   CarouselContent,
   CarouselPrevious,
-  CarouselScrollTo,
   type CarouselApi,
+  CarouselBulletNavigation,
 };
