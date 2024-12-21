@@ -10,7 +10,7 @@ export interface NavConfig {
   sectorsNav: (NavItem & Sector)[];
 }
 
-export function useNavConfig(): NavConfig {
+export function NavConfig(): NavConfig {
   const { t } = useTranslation();
 
   return {

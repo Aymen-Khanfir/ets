@@ -1,9 +1,12 @@
-import { TFunction } from 'i18next';
+import { useTranslation } from 'react-i18next';
+
 import { z } from 'zod';
 
 import { isFromTunisia } from '@/lib/is-from-tunisia.ts';
 
-export const createContactSchema = (t: TFunction) =>
+export const createContactSchema = (
+  t: ReturnType<typeof useTranslation>['t']
+) =>
   z
     .object({
       username: z.string().min(3, t('contact.form.name_error', { count: 3 })),

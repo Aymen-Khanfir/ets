@@ -9,6 +9,8 @@ import { useLocales } from '@/hooks/use-locales.ts';
 
 import { cn } from '@/lib/utils.ts';
 
+import { NavConfig } from '@/config/nav-config.tsx';
+
 import { Card } from '@/components/ui/card.tsx';
 import {
   Carousel,
@@ -16,10 +18,9 @@ import {
   CarouselContent,
   CarouselBulletNavigation,
 } from '@/components/ui/carousel.tsx';
-import { useNavConfig } from '@/config/nav-config.tsx';
 
-function Sectors() {
-  const { sectorsNav } = useNavConfig();
+function SectorsCarousel() {
+  const { sectorsNav } = NavConfig();
   const { dir } = useLocales();
 
   const totalItems = sectorsNav.length;
@@ -64,7 +65,7 @@ function Sectors() {
               key={index}
               className='basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 cursor-pointer'
             >
-              <Link to='/sector/$index' params={{ index: sector.href }}>
+              <Link to='/sector/$title' params={{ title: sector.href }}>
                 <Card className='overflow-hidden relative rounded group'>
                   <img
                     src={sector.image}
@@ -114,4 +115,4 @@ function Sectors() {
   );
 }
 
-export default Sectors;
+export default SectorsCarousel;

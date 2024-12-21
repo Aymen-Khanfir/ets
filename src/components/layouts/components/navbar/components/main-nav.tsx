@@ -1,11 +1,12 @@
 import { Link } from '@tanstack/react-router';
 
+import { NavConfig } from '@/config/nav-config.tsx';
+
 import { Icons } from '@/components/shared/icons.tsx';
 import { Button } from '@/components/ui/button.tsx';
-import { useNavConfig } from '@/config/nav-config.tsx';
 
 export function MainNav() {
-  const { mainNav } = useNavConfig();
+  const { mainNav } = NavConfig();
 
   return (
     <div className='hidden md:flex lg:gap-3'>

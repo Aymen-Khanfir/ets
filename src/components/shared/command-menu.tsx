@@ -7,6 +7,10 @@ import { useLocales } from '@/hooks/use-locales.ts';
 
 import { cn } from '@/lib/utils.ts';
 
+import { type DialogProps } from '@radix-ui/react-dialog';
+
+import { NavConfig } from '@/config/nav-config.tsx';
+
 import { Button } from '@/components/ui/button.tsx';
 import {
   CommandItem,
@@ -16,13 +20,13 @@ import {
   CommandInput,
   CommandDialog,
 } from '@/components/ui/command.tsx';
-import { useNavConfig } from '@/config/nav-config.tsx';
-import { type DialogProps } from '@radix-ui/react-dialog';
+
 export function CommandMenu({ ...props }: DialogProps) {
   const [open, setOpen] = React.useState(false);
-  const { sectorsNav } = useNavConfig();
   const { t } = useTranslation();
   const { dir } = useLocales();
+
+  const { sectorsNav } = NavConfig();
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
