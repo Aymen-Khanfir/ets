@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { useNavigate } from '@tanstack/react-router';
 import { Wallpaper } from 'lucide-react';
 
 import { useLocales } from '@/hooks/use-locales.ts';
@@ -25,6 +26,7 @@ export function CommandMenu({ ...props }: DialogProps) {
   const [open, setOpen] = React.useState(false);
   const { t } = useTranslation();
   const { dir } = useLocales();
+  const navigate = useNavigate();
 
   const { sectorsNav } = NavConfig();
 
@@ -95,8 +97,11 @@ export function CommandMenu({ ...props }: DialogProps) {
                   key={sector.href}
                   value={sector.title}
                   onSelect={() => {
-                    runCommand(() => {
-                      console.log('Navigating to', sector.href);
+                    runCommand(async () => {
+                      await navigate({
+                        to: '/sector/$title',
+                        params: { title: sector.href },
+                      });
                     });
                   }}
                 >
