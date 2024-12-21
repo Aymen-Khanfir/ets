@@ -18,6 +18,7 @@
     "resources": "i18next-resources-for-ts interface -i public/locales/en -o src/types/resources.d.ts"
   },
   "dependencies": {
+    "@radix-ui/react-accordion": "^1.2.2",
     "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-direction": "^1.1.0",
     "@radix-ui/react-dropdown-menu": "^2.1.2",
@@ -27,6 +28,7 @@
     "@radix-ui/react-scroll-area": "^1.2.1",
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-switch": "^1.1.1",
+    "@radix-ui/react-tabs": "^1.1.2",
     "@tabler/icons-react": "^3.22.0",
     "@tanstack/react-form": "^0.39.0",
     "@tanstack/react-router": "^1.83.0",

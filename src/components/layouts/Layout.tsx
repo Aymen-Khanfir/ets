@@ -3,15 +3,15 @@ import React, { useState } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import { ArrowBigUpDash } from 'lucide-react';
 
-import Footer from '@/components/layouts/components/Footer.tsx';
+import Footer from '@/components/layouts/components/footer/Footer.tsx';
 import Navbar from '@/components/layouts/components/navbar/Navbar.tsx';
 import { Button } from '@/components/ui/button.tsx';
 
-interface MainProps {
+interface LayoutProps {
   children: React.ReactNode;
 }
 
-function Main({ children }: MainProps) {
+export default function Layout({ children }: LayoutProps) {
   const [hidden, setHidden] = useState<boolean>(false);
   const { scrollY } = useScroll();
 
@@ -28,7 +28,7 @@ function Main({ children }: MainProps) {
       <Navbar />
       <main className='overflow-hidden'>{children}</main>
       <motion.div
-        className='fixed bottom-4 right-3.5'
+        className='fixed bottom-4 right-3.5 z-50'
         variants={{
           hidden: { x: '140%' },
           visible: { x: 1 },
@@ -51,5 +51,3 @@ function Main({ children }: MainProps) {
     </>
   );
 }
-
-export default Main;

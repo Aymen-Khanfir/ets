@@ -1,4 +1,4 @@
-name: Auto Create PR to Main from Dev
+name: Auto Create PR to Layout from Dev
 
 on:
   pull_request:
@@ -27,7 +27,7 @@ jobs:
           echo "::set-output name=body::$PR_BODY"
 
       # Create a pull request from dev to main with the same title and body as the merged PR
-      - name: Create pull request to Main
+      - name: Create pull request to Layout
         uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}

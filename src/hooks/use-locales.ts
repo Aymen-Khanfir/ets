@@ -3,10 +3,10 @@ import { useTranslation } from 'react-i18next';
 
 import { toast } from 'sonner';
 
-import { useAllLanguages } from '@/config/language-config.tsx';
+import { LanguageConfig } from '@/config/language-config.tsx';
 
 export function useLocales() {
-  const allLanguages = useAllLanguages();
+  const allLanguages = LanguageConfig();
   const { i18n, t } = useTranslation();
   const [dir, setDir] = useState<'rtl' | 'ltr'>(
     i18n.language === 'ar' ? 'rtl' : 'ltr'
