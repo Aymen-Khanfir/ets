@@ -31,6 +31,7 @@ function Sector() {
           <div className='flex items-center gap-3 lg:gap-6'>
             <Link
               to='/'
+              hash='sectors'
               role='button'
               className='p-2 rounded hover:bg-card-foreground hover:text-background transition-all duration-300'
             >
