@@ -18,6 +18,7 @@
     "resources": "i18next-resources-for-ts interface -i public/locales/en -o src/types/resources.d.ts"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@radix-ui/react-accordion": "^1.2.2",
     "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-direction": "^1.1.0",
