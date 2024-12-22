@@ -55,6 +55,7 @@
       "message_error": "يجب أن تحتوي الرسالة على  {{count}} حرف على الأقل",
       "message_characters_left": "{{count}} حرف متبقي",
       "is_validating": "التحقق...",
+      "is_sending": "إرسال...",
       "submit": "إرسال",
       "reset": "إعادة تعيين",
       "submit_invalid": "يرجى تصحيح الأخطاء قبل التقديم",

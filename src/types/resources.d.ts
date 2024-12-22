@@ -56,6 +56,7 @@ interface Resources {
         message_error: 'Message must be at least {{count}} characters long';
         message_characters_left: '{{count}} characters left';
         is_validating: 'Validating...';
+        is_sending: 'Sending...';
         submit: 'Submit';
         reset: 'Reset';
         submit_invalid: 'Please fix the errors before submitting';

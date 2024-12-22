@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { useForm, FieldMeta } from '@tanstack/react-form';
@@ -17,6 +18,7 @@ import {
   ContactFormType,
   createContactSchema,
 } from '@/schema/contact-schema.ts';
+import emailjs from '@emailjs/browser';
 
 import { Button } from '@/components/ui/button.tsx';
 import { Input } from '@/components/ui/input.tsx';
@@ -26,6 +28,7 @@ import { Textarea } from '@/components/ui/textarea.tsx';
 export function ContactForm() {
   const { t } = useTranslation();
   const { countryData, error } = useLoaderData({ from: '/' });
+  const formRef = useRef<HTMLFormElement>(null);
 
   const contactSchema = createContactSchema(t);
 
@@ -56,13 +59,38 @@ export function ContactForm() {
         richColors: true,
       });
     },
-    onSubmit: ({ value }) => {
+    onSubmit: async ({ value }) => {
       value = { ...value, phone: stripPhoneNumber(value.phone) };
 
-      toast.success(t('contact.form.submit', { context: 'success' }), {
-        richColors: true,
-        description: <pre>{JSON.stringify(value, null, 2)}</pre>,
-      });
+      if (formRef.current) {
+        try {
+          await emailjs.send(
+            import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
+            value.country === 'TN'
+              ? import.meta.env.VITE_APP_EMAILJS_TUNISIAN_TEMPLATE_ID
+              : import.meta.env.VITE_APP_EMAILJS_FOREIGN_TEMPLATE_ID,
+            {
+              ...value,
+              country: countryData?.name,
+            },
+            import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+          );
+
+          toast.success(t('contact.form.submit', { context: 'success' }), {
+            richColors: true,
+          });
+
+          reset();
+        } catch (error) {
+          console.error('EmailJS Error:', error);
+          toast.error(
+            'Something went wrong with our email form, please try again later.',
+            {
+              richColors: true,
+            }
+          );
+        }
+      }
     },
   });
 
@@ -85,6 +113,7 @@ export function ContactForm() {
           console.error('Error submitting form');
         });
       }}
+      ref={formRef}
     >
       <Field name='username'>
         {(field) => (
@@ -98,6 +127,7 @@ export function ContactForm() {
             <Input
               id={field.name}
               className='border-white text-white placeholder:text-white'
+              name={field.name}
               autoComplete={field.name}
               value={field.state.value}
               onChange={(e) => {
@@ -120,10 +150,11 @@ export function ContactForm() {
             </Label>
             <Input
               id={field.name}
-              className='border-white text-white placeholder:text-white'
+              name={field.name}
               type='email'
               autoComplete={field.name}
               value={field.state.value}
+              className='border-white text-white placeholder:text-white'
               onChange={(e) => {
                 field.handleChange(e.target.value);
               }}
@@ -143,7 +174,8 @@ export function ContactForm() {
               {t('contact.form.phone')}
             </Label>
             <Input
-              id='phone'
+              id={field.name}
+              name={field.name}
               type='tel'
               className='border-white text-white placeholder:text-white'
               maxLength={15}
@@ -180,6 +212,7 @@ export function ContactForm() {
             </Label>
             <Textarea
               id={field.name}
+              name={field.name}
               className='border-white text-white placeholder:text-white min-h-[150px]'
               autoComplete={field.name}
               maxLength={200}
@@ -218,7 +251,7 @@ export function ContactForm() {
               type='submit'
             >
               {isSubmitting
-                ? t('contact.form.is_validating')
+                ? t('contact.form.is_sending')
                 : t('contact.form.submit')}
             </Button>
           )}

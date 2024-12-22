@@ -55,8 +55,9 @@
       "message_error": "Le message doit comporter au moins {{count}} caractères",
       "message_characters_left": "{{count}} caractères restants",
       "is_validating": "Validation...",
+      "is_sending": "Envoi...",
       "submit": "Soumettre",
-        "reset": "Réinitialiser",
+      "reset": "Réinitialiser",
       "submit_invalid": "Veuillez corriger les erreurs avant de soumettre",
       "submit_success": "Message envoyé avec succès"
     }
