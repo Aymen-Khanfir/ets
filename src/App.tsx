@@ -4,9 +4,10 @@ import { createRouter, RouterProvider } from '@tanstack/react-router';
 
 import { useLocales } from '@/hooks/use-locales.ts';
 
-import { Toaster } from '@/components/ui/sonner.tsx';
 import { ThemeProvider } from '@/context/theme-context.tsx';
 import i18n from '@/i18n/i18n.ts';
+
+import { Toaster } from '@/components/ui/sonner.tsx';
 
 import { routeTree } from './routeTree.gen';
 
@@ -31,6 +32,7 @@ function App() {
         <RouterProvider router={router} />
         <Toaster
           position={dir === 'ltr' ? 'bottom-right' : 'bottom-left'}
+          richColors={true}
           className='z-50'
         />
       </ThemeProvider>
