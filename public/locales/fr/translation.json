@@ -64,5 +64,69 @@
   "footer": {
     "description": "La meilleure solution à tous vos besoins en collage",
     "copyright": "© ETS LOUATI COLLAGE {{year}}, Tous droits réservés"
+  },
+  "service_description": {
+    "title": "Solutions de Contre-collage",
+    "description": "Des solutions innovantes pour l'habillement, l'orthopédie, l'ameublement, l'automobile, les sacs et les chaussures.",
+    "cta_button": "Demandez un devis",
+    "advantages": {
+      "title": "Avantages de notre service",
+      "description": "Non mentionné dans la traduction française",
+      "title_sustainability": "Durabilité renforcée",
+      "description_sustainability": "Améliore la résistance à l'usure et aux déchirures.",
+      "title_quality": "Qualité supérieure",
+      "description_quality": "Contrôle qualité à chaque étape pour un résultat impeccable.",
+      "title_customization": "Conception personnalisée",
+      "description_customization": "Solutions sur mesure alliant esthétique et fonctionnalité.",
+      "title_adhesives": "Adhésifs certifiés",
+      "description_adhesives": "Utilisation de colles conformes aux normes industrielles pour une adhésion durable.",
+      "title_Profitability": "Rentabilité",
+      "description_Profitability": "Des solutions efficaces à des coûts optimisés.",
+      "title_innovation": "Innovation continue",
+      "description_innovation": "Des recherches et développements continus pour des solutions à la pointe de la technologie."
+    },
+    "process": {
+      "title": "Notre processus",
+      "description": "Non mentionné dans la traduction française",
+      "step1": {
+        "title": "Préparation des matériaux",
+        "description": "Choix des matériaux adaptés, comme les tissus, cuirs et autres matériaux techniques."
+      },
+      "step2": {
+        "title": "Assemblage",
+        "description": "Collage de précision, utilisant des adhésifs certifiés."
+      },
+      "step3": {
+        "title": "Contrôle qualité",
+        "description": "Chaque produit est minutieusement testé pour garantir sa durabilité et ses performances."
+      },
+      "step4": {
+        "title": "Finition",
+        "description": "Ajustements finaux et préparation pour la livraison."
+      }
+    },
+    "quality_standards": {
+      "title": "Nos standards de qualité",
+      "description": "Non mentionné dans la traduction française",
+      "standard": {
+        "item": "Normes industrielles",
+        "item_1": "ISO 9001:2015 - Management de la qualité",
+        "item_2": "OEKO-TEX® Standard 100 - Sécurité des textiles",
+        "item_3": "REACH - Réglementation sur les substances chimiques"
+      },
+      "engagement": {
+        "item": "Engagement qualité",
+        "item_1": "Contrôle qualité rigoureux à chaque étape de production",
+        "item_2": "Formation continue du personnel aux dernières techniques",
+        "item_3": "Amélioration constante des processus de fabrication",
+        "item_4": "Utilisation de matériaux et d'adhésifs de haute qualité"
+      },
+      "certifications": {
+        "item": "Certifications et partenariats",
+        "item_1": "Partenariats avec des laboratoires de test indépendants",
+        "item_2": "Certification de conformité aux normes européennes",
+        "item_3": "Collaboration avec des instituts de recherche textile"
+      }
+    }
   }
 }

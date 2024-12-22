@@ -1,14 +1,15 @@
 import { useState } from 'react';
 
+import { Link } from '@tanstack/react-router';
 import Autoplay from 'embla-carousel-autoplay';
 import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
-
-import { Sector } from '@/types/sector';
 
 import { useCarouselBullets } from '@/hooks/use-carousel-bullets.ts';
 import { useLocales } from '@/hooks/use-locales.ts';
 
 import { cn } from '@/lib/utils.ts';
+
+import { NavConfig } from '@/config/nav-config.tsx';
 
 import { Card } from '@/components/ui/card.tsx';
 import {
@@ -17,10 +18,9 @@ import {
   CarouselContent,
   CarouselBulletNavigation,
 } from '@/components/ui/carousel.tsx';
-import { useNavConfig } from '@/config/nav-config.tsx';
 
-function Sectors() {
-  const { sectorsNav } = useNavConfig();
+function SectorsCarousel() {
+  const { sectorsNav } = NavConfig();
   const { dir } = useLocales();
 
   const totalItems = sectorsNav.length;
@@ -60,23 +60,25 @@ function Sectors() {
         }}
       >
         <CarouselContent>
-          {sectorsNav.map((sector: Sector, index: number) => (
+          {sectorsNav.map((sector, index: number) => (
             <CarouselItem
               key={index}
               className='basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 cursor-pointer'
             >
-              <Card className='overflow-hidden relative rounded group'>
-                <img
-                  src={sector.image}
-                  alt={sector.title}
-                  className='object-cover transition-transform duration-300 ease-in-out group-hover:scale-110 aspect-[3/5]'
-                />
-                <div className='absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex items-center w-11/12 justify-center bg-primary/80 dark:bg-black dark:bg-opacity-50 rounded transition-all duration-300 ease-in-out group-hover:opacity-0'>
-                  <span className='text-[0.7rem] sm:text-base lg:text-lg xl:text-xl font-semibold text-white text-center py-2 uppercase'>
-                    {sector.title}
-                  </span>
-                </div>
-              </Card>
+              <Link to='/sector/$title' params={{ title: sector.href }}>
+                <Card className='overflow-hidden relative rounded group'>
+                  <img
+                    src={sector.image}
+                    alt={sector.title}
+                    className='object-cover transition-transform duration-300 ease-in-out group-hover:scale-110 aspect-[3/5]'
+                  />
+                  <div className='absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex items-center w-11/12 justify-center bg-primary/80 dark:bg-black dark:bg-opacity-50 rounded transition-all duration-300 ease-in-out group-hover:opacity-0'>
+                    <span className='text-[0.7rem] sm:text-base lg:text-lg xl:text-xl font-semibold text-white text-center py-2 uppercase'>
+                      {sector.title}
+                    </span>
+                  </div>
+                </Card>
+              </Link>
             </CarouselItem>
           ))}
         </CarouselContent>
@@ -113,4 +115,4 @@ function Sectors() {
   );
 }
 
-export default Sectors;
+export default SectorsCarousel;
