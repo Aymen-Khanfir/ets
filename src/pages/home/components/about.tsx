@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from '@tanstack/react-router';
 
 import AboutImage from '@/assets/images/about_image.png';
+
 import { Button } from '@/components/ui/button.tsx';
 
 export default function About() {

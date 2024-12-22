@@ -12,12 +12,19 @@
 
 import { Route as rootRoute } from './routes/__root';
 import { Route as IndexImport } from './routes/index';
+import { Route as SectorTitleImport } from './routes/sector.$title';
 
 // Create/Update Routes
 
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any);
+
+const SectorTitleRoute = SectorTitleImport.update({
+  id: '/sector/$title',
+  path: '/sector/$title',
   getParentRoute: () => rootRoute,
 } as any);
 
@@ -32,6 +39,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport;
       parentRoute: typeof rootRoute;
     };
+    '/sector/$title': {
+      id: '/sector/$title';
+      path: '/sector/$title';
+      fullPath: '/sector/$title';
+      preLoaderRoute: typeof SectorTitleImport;
+      parentRoute: typeof rootRoute;
+    };
   }
 }
 
@@ -39,32 +53,37 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute;
+  '/sector/$title': typeof SectorTitleRoute;
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute;
+  '/sector/$title': typeof SectorTitleRoute;
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute;
   '/': typeof IndexRoute;
+  '/sector/$title': typeof SectorTitleRoute;
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath;
-  fullPaths: '/';
+  fullPaths: '/' | '/sector/$title';
   fileRoutesByTo: FileRoutesByTo;
-  to: '/';
-  id: '__root__' | '/';
+  to: '/' | '/sector/$title';
+  id: '__root__' | '/' | '/sector/$title';
   fileRoutesById: FileRoutesById;
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute;
+  SectorTitleRoute: typeof SectorTitleRoute;
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  SectorTitleRoute: SectorTitleRoute,
 };
 
 export const routeTree = rootRoute
@@ -77,11 +96,15 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/"
+        "/",
+        "/sector/$title"
       ]
     },
     "/": {
       "filePath": "index.ts"
+    },
+    "/sector/$title": {
+      "filePath": "sector.$title.ts"
     }
   }
 }

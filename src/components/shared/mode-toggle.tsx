@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { Sun, Moon } from 'lucide-react';
 
-import { useTheme } from '@/hooks/use-theme.tsx';
+import { useTheme } from '@/hooks/use-theme.ts';
 
 import { Label } from '@/components/ui/label.tsx';
 import { Switch } from '@/components/ui/switch.tsx';

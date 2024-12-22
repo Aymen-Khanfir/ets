@@ -4,7 +4,7 @@ import { Language } from '@/types/language';
 
 import { Icons } from '@/components/shared/icons.tsx';
 
-export function useAllLanguages(): Language[] {
+export function LanguageConfig(): Language[] {
   const { t } = useTranslation();
 
   return [
