@@ -45,10 +45,13 @@
       "location": "Route Saltnia km 4 Sfax, Tunisie"
     },
     "form": {
+      "error": "Formulaire indisponible",
+      "error_description": "Nous nous excusons pour le désagrément. Ce formulaire est actuellement hors service. Veuillez réessayer plus tard.",
       "name": "Nom et prénom",
       "name_error": "Le nom d'utilisateur doit comporter au moins 3 caractères",
       "email": "E-mail",
       "email_error": "L'email doit être un email valide",
+      "email_service_error": "Notre formulaire a rencontré une erreur, veuillez réessayer plus tard.",
       "phone": "Numéro de téléphone",
       "phone_error": "Le numéro de téléphone doit être composé de 8 chiffres",
       "message": "Message",

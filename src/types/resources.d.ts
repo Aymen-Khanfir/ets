@@ -46,10 +46,13 @@ interface Resources {
         location: 'Saltnia road km 4 Sfax, Tunisia';
       };
       form: {
+        error: 'Form unavailable';
+        error_description: 'We apologize for the inconvenience. This form is currently out of service. Please check back later.';
         name: 'Full name';
         name_error: 'Username must be at least 3 characters long';
         email: 'E-mail';
         email_error: 'Email must be a valid email';
+        email_service_error: 'Our email form encountered an error, please try again at a later time.';
         phone: 'Phone number';
         phone_error: 'Phone number must be composed from 8 numbers';
         message: 'Message';

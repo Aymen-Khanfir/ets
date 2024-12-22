@@ -32,6 +32,7 @@ function App() {
         <RouterProvider router={router} />
         <Toaster
           position={dir === 'ltr' ? 'bottom-right' : 'bottom-left'}
+          richColors={true}
           className='z-50'
         />
       </ThemeProvider>

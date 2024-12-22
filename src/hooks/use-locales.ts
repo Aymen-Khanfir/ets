@@ -20,18 +20,14 @@ export function useLocales() {
         );
 
         if (selectedLanguage) {
-          toast.info(t('language_current', { lang: selectedLanguage.label }), {
-            richColors: true,
-          });
+          toast.info(t('language_current', { lang: selectedLanguage.label }));
         }
         return;
       }
 
       try {
         await i18n.changeLanguage(lng);
-        toast.success(t('language_changed'), {
-          richColors: true,
-        });
+        toast.success(t('language_changed'));
       } catch (error) {
         console.error('Failed to change language:', error);
         toast.error(t('language_change_failed'));

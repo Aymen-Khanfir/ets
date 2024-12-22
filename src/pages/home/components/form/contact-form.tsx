@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useForm, FieldMeta } from '@tanstack/react-form';
 import { useLoaderData } from '@tanstack/react-router';
 import { ZodValidator, zodValidator } from '@tanstack/zod-form-adapter';
+import { AlertOctagon } from 'lucide-react';
 import { toast } from 'sonner';
 
 import { useCharacterLimit } from '@/hooks/use-character-limit.ts';
@@ -55,9 +56,7 @@ export function ContactForm() {
     },
     asyncDebounceMs: 500,
     onSubmitInvalid: () => {
-      toast.error(t('contact.form.submit', { context: 'invalid' }), {
-        richColors: true,
-      });
+      toast.error(t('contact.form.submit', { context: 'invalid' }));
     },
     onSubmit: async ({ value }) => {
       value = { ...value, phone: stripPhoneNumber(value.phone) };
@@ -76,19 +75,12 @@ export function ContactForm() {
             import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
           );
 
-          toast.success(t('contact.form.submit', { context: 'success' }), {
-            richColors: true,
-          });
+          toast.success(t('contact.form.submit', { context: 'success' }));
 
           reset();
         } catch (error) {
           console.error('EmailJS Error:', error);
-          toast.error(
-            'Something went wrong with our email form, please try again later.',
-            {
-              richColors: true,
-            }
-          );
+          toast.error(t('contact.form.email', { context: 'service_error' }));
         }
       }
     },
@@ -96,10 +88,17 @@ export function ContactForm() {
 
   if (error) {
     return (
-      <div>
-        <h1>Error</h1>
-        <p>{error}</p>
-      </div>
+      <section className='grid items-center h-full'>
+        <div className='flex flex-col items-center justify-center p-8 bg-gray-100 rounded-lg shadow-md max-w-md mx-auto'>
+          <AlertOctagon className='w-16 h-16 text-yellow-500 mb-4' />
+          <h2 className='text-2xl font-bold text-gray-800 mb-2'>
+            {t('contact.form.error')}
+          </h2>
+          <p className='text-gray-600 text-center'>
+            {t('contact.form.error', { context: 'description' })}
+          </p>
+        </div>
+      </section>
     );
   }
 
