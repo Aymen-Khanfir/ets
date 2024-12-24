@@ -9,6 +9,8 @@ import { toast } from 'sonner';
 
 import { isProduction } from '@/lib/is-production.ts';
 
+const expirationTimePerDay = 24 * 60 * 60 * 1000;
+
 async function initializeI18n() {
   await i18next
     .use(initReactI18next)
@@ -24,7 +26,7 @@ async function initializeI18n() {
         backends: [LocalStorageBackend, HttpBackend],
         backendOptions: [
           {
-            expirationTime: 7 * 24 * 60 * 60 * 1000, // 7 days
+            expirationTime: expirationTimePerDay, // 1 day
           },
           {
             loadPath: '/locales/{{lng}}/{{ns}}.json',
